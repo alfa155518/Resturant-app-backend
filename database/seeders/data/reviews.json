@@ -1,0 +1,142 @@
+[
+  {
+      "user_id": 1,
+      "client_name": "John Doe",
+      "client_email": "john.doe@example.com",
+      "rating": 5,
+      "review": "Fantastic experience! Highly recommend this place."
+  },
+  {
+      "user_id": null,
+      "client_name": "Jane Smith",
+      "client_email": "jane.smith@example.com",
+      "rating": 4,
+      "review": "Great food and ambiance, service was a bit slow."
+  },
+  {
+      "user_id": 2,
+      "client_name": "Mike Johnson",
+      "client_email": null,
+      "rating": 3,
+      "review": "Average experience, nothing special."
+  },
+  {
+      "user_id": 3,
+      "client_name": "Sarah Williams",
+      "client_email": "sarah.w@example.com",
+      "rating": 5,
+      "review": "Best meal I've had in years!"
+  },
+  {
+      "user_id": null,
+      "client_name": "Robert Brown",
+      "client_email": "robert.b@example.com",
+      "rating": 2,
+      "review": "Disappointing service, food was cold."
+  },
+  {
+      "user_id": 4,
+      "client_name": "Emily Davis",
+      "client_email": "emily.d@example.com",
+      "rating": 4,
+      "review": "Lovely decor and tasty dishes."
+  },
+  {
+      "user_id": null,
+      "client_name": "Tom Wilson",
+      "client_email": null,
+      "rating": 3,
+      "review": "Okay food, but overpriced."
+  },
+  {
+      "user_id": 5,
+      "client_name": "Lisa Anderson",
+      "client_email": "lisa.a@example.com",
+      "rating": 5,
+      "review": "Perfect evening, staff was amazing!"
+  },
+  {
+      "user_id": 6,
+      "client_name": "David Lee",
+      "client_email": "david.lee@example.com",
+      "rating": 4,
+      "review": "Great vibe, food was excellent."
+  },
+  {
+      "user_id": null,
+      "client_name": "Anna Taylor",
+      "client_email": null,
+      "rating": 2,
+      "review": "Not impressed, won't return."
+  },
+  {
+      "user_id": 7,
+      "client_name": "Chris Martinez",
+      "client_email": "chris.m@example.com",
+      "rating": 5,
+      "review": "Exceptional service and cuisine!"
+  },
+  {
+      "user_id": 8,
+      "client_name": "Kelly White",
+      "client_email": "kelly.w@example.com",
+      "rating": 3,
+      "review": "Mediocre experience overall."
+  },
+  {
+      "user_id": null,
+      "client_name": "Paul Garcia",
+      "client_email": "paul.g@example.com",
+      "rating": 4,
+      "review": "Nice place, good selection of dishes."
+  },
+  {
+      "user_id": 9,
+      "client_name": "Nancy Clark",
+      "client_email": null,
+      "rating": 5,
+      "review": "Absolutely delightful, will come again!"
+  },
+  {
+      "user_id": 10,
+      "client_name": "James Rodriguez",
+      "client_email": "james.r@example.com",
+      "rating": 3,
+      "review": "Food was fine, service was lacking."
+  },
+  {
+      "user_id": null,
+      "client_name": "Laura Adams",
+      "client_email": "laura.a@example.com",
+      "rating": 4,
+      "review": "Enjoyed the meal, great atmosphere."
+  },
+  {
+      "user_id": 11,
+      "client_name": "Mark Turner",
+      "client_email": null,
+      "rating": 2,
+      "review": "Poor experience, slow service."
+  },
+  {
+      "user_id": 12,
+      "client_name": "Sophie Miller",
+      "client_email": "sophie.m@example.com",
+      "rating": 5,
+      "review": "Wonderful place, highly recommended!"
+  },
+  {
+      "user_id": null,
+      "client_name": "Greg Evans",
+      "client_email": "greg.e@example.com",
+      "rating": 3,
+      "review": "Average food, nothing stood out."
+  },
+  {
+      "user_id": 13,
+      "client_name": "Rachel Green",
+      "client_email": "rachel.g@example.com",
+      "rating": 4,
+      "review": "Really enjoyed the evening here."
+  }
+]

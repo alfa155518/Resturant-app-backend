@@ -1,0 +1,222 @@
+[
+  {
+      "id": 1,
+      "name": "John Smith",
+      "role": "Head Chef",
+      "hire_date": "2020-03-15",
+      "salary": 75000,
+      "email": "john.smith@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/um9gkssicpyzi4wc1ezb",
+      "bio": "Experienced chef with 15 years in fine dining",
+      "is_active": true
+  },
+  {
+      "id": 2,
+      "name": "Maria Garcia",
+      "role": "Sous Chef",
+      "hire_date": "2021-06-20",
+      "salary": 55000,
+      "email": "maria.garcia@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/i5kikgr5n3vgvfugkug5",
+      "bio": "Specializes in Mediterranean cuisine",
+      "is_active": true
+  },
+  {
+      "id": 3,
+      "name": "Robert Chen",
+      "role": "Line Cook",
+      "hire_date": "2022-09-01",
+      "salary": 38000,
+      "email": "robert.chen@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/gfnxg1e11ydoolmwxpur",
+      "bio": "Quick and efficient prep cook",
+      "is_active": true
+  },
+  {
+      "id": 4,
+      "name": "Sarah Johnson",
+      "role": "Server",
+      "hire_date": "2023-01-15",
+      "salary": 32000,
+      "email": "sarah.johnson@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/m7tufejxy3uf5ih9lfgn",
+      "bio": "Friendly and attentive wait staff",
+      "is_active": true
+  },
+  {
+      "id": 5,
+      "name": "Michael Brown",
+      "role": "Bartender",
+      "hire_date": "2021-11-10",
+      "salary": 40000,
+      "email": "michael.brown@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/bfemgrnvidfho9tb8mtr",
+      "bio": "Mixology expert with creative flair",
+      "is_active": true
+  },
+  {
+      "id": 6,
+      "name": "Emily Davis",
+      "role": "Hostess",
+      "hire_date": "2023-03-01",
+      "salary": 30000,
+      "email": "emily.davis@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/t8zim4bourvbepeh9quv",
+      "bio": "Welcoming first point of contact",
+      "is_active": true
+  },
+  {
+      "id": 7,
+      "name": "David Wilson",
+      "role": "Dishwasher",
+      "hire_date": "2022-12-01",
+      "salary": 28000,
+      "email": "david.wilson@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/nh8dbyvjnpu4ubjrlv0s",
+      "bio": "Reliable and thorough kitchen support",
+      "is_active": true
+  },
+  {
+      "id": 8,
+      "name": "Ahmed Hassob",
+      "role": "Manager",
+      "hire_date": "2019-08-15",
+      "salary": 65000,
+      "email": "ahmed.anderson@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/sr673aqudyq2t4dyefc9",
+      "bio": "Organized leader with 10 years experience",
+      "is_active": true
+  },
+  {
+      "id": 9,
+      "name": "Carlos Martinez",
+      "role": "Prep Cook",
+      "hire_date": "2023-02-10",
+      "salary": 34000,
+      "email": "carlos.martinez@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/yvjqbbu9ex7evflzptro",
+      "bio": "Detail-oriented food prep specialist",
+      "is_active": true
+  },
+  {
+      "id": 10,
+      "name": "Rachel Kim",
+      "role": "Server",
+      "hire_date": "2022-07-15",
+      "salary": 32000,
+      "email": "rachel.kim@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/m2ityieaal6wunmcwzs9",
+      "bio": "Excellent customer service skills",
+      "is_active": true
+  },
+  {
+      "id": 11,
+      "name": "Thomas Lee",
+      "role": "Line Cook",
+      "hire_date": "2021-04-20",
+      "salary": 38000,
+      "email": "thomas.lee@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/mhtq9j36qsnbi1iudlre",
+      "bio": "Grill station expert",
+      "is_active": true
+  },
+  {
+      "id": 12,
+      "name": "Jennifer White",
+      "role": "Pastry Chef",
+      "hire_date": "2020-09-01",
+      "salary": 52000,
+      "email": "jennifer.white@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/ktsly0ypjjuoiki3l8ys",
+      "bio": "Creative dessert specialist",
+      "is_active": true
+  },
+  {
+      "id": 13,
+      "name": "Ahmed Khan",
+      "role": "Busser",
+      "hire_date": "2023-05-15",
+      "salary": 29000,
+      "email": "ahmed.khan@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/qjzdgo0u4kjap0guljgk",
+      "bio": "Efficient dining room support",
+      "is_active": true
+  },
+  {
+      "id": 14,
+      "name": "Sophie Clark",
+      "role": "Server",
+      "hire_date": "2022-11-01",
+      "salary": 32000,
+      "email": "sophie.clark@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/zkddlayexo7177yn8vpp",
+      "bio": "Great memory for orders",
+      "is_active": true
+  },
+  {
+      "id": 15,
+      "name": "Peter Nguyen",
+      "role": "Bartender",
+      "hire_date": "2021-08-15",
+      "salary": 40000,
+      "email": "peter.nguyen@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/q2dma02lum87znagy5qd",
+      "bio": "Craft cocktail specialist",
+      "is_active": true
+  },
+  {
+      "id": 16,
+      "name": "Kelly Thompson",
+      "role": "Hostess",
+      "hire_date": "2023-04-01",
+      "salary": 30000,
+      "email": "kelly.thompson@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/fvdufxnovysjye7zkzel",
+      "bio": "Warm and professional greeter",
+      "is_active": true
+  },
+  {
+      "id": 17,
+      "name": "James Rodriguez",
+      "role": "Dishwasher",
+      "hire_date": "2022-10-15",
+      "salary": 28000,
+      "email": "james.rodriguez@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/fahhpxmbjaviwytmhzyi",
+      "bio": "Fast and reliable cleaner",
+      "is_active": true
+  },
+  {
+      "id": 18,
+      "name": "Anna Petrova",
+      "role": "Sous Chef",
+      "hire_date": "2020-12-01",
+      "salary": 55000,
+      "email": "anna.petrova@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/n0vifkorah1zzx7lyach",
+      "bio": "Expert in sauces and seasonings",
+      "is_active": true
+  },
+  {
+      "id": 19,
+      "name": "Mark Taylor",
+      "role": "Line Cook",
+      "hire_date": "2021-02-15",
+      "salary": 38000,
+      "email": "mark.taylor@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/aaqn4ochwzchmxoooddc",
+      "bio": "Specializes in seafood dishes",
+      "is_active": true
+  },
+  {
+      "id": 20,
+      "name": "Laura Miller",
+      "role": "Server",
+      "hire_date": "2023-06-01",
+      "salary": 32000,
+      "email": "laura.miller@restaurant.com",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/f_auto,q_auto/v1/laravel-restaurant/team/ifmrvovlvkux4hfzhzpc",
+      "bio": "Upbeat and energetic wait staff",
+      "is_active": true
+  }
+]
