@@ -28,4 +28,9 @@ class Table extends Model
         'is_available' => 'boolean',
         'is_reservable' => 'boolean'
     ];
+
+    public function reservation()
+    {
+        return $this->hasMany(Reservations::class);
+    }
 }

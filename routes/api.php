@@ -1,28 +1,39 @@
 <?php
 
-
-
+use App\Http\Controllers\AiController;
+use App\Http\Controllers\Auth\ChangePersonalUserDataController;
+use App\Http\Controllers\Auth\ChangeUserPasswordController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\CartItemsController;
+use App\Http\Controllers\CheckoutsController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
+use App\Http\Middleware\IsAuthorized;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+
 
 // User Routes
-Route::post('v1/signup/user',[UserController::class,'signup']);
-Route::post('v1/login/user',[UserController::class,'login']);
+Route::post('v1/signup/user', [UserController::class, 'signup']);
+Route::post('v1/login/user', [UserController::class, 'login']);
 Route::get('v1/auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('v1/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::post('v1/auth/forget-password', [MailController::class, 'forgetPassword']);
 Route::post('v1/auth/reset-password', [MailController::class, 'resetPassword']);
+
+
+// User Auth Routes
+Route::middleware(IsAuthorized::class)->group(function () {
+    Route::post('v1/auth/change-password', [ChangeUserPasswordController::class, 'changeUserPassword']);
+    Route::patch('v1/auth/change-personalData', [ChangePersonalUserDataController::class, 'changePersonalData']);
+    Route::delete('v1/logout/user', [UserController::class, 'logout']);
+});
 
 
 // Menu Routes
@@ -39,5 +50,36 @@ Route::get('v1/team/{id}', [TeamController::class, 'teamMember']);
 Route::get('v1/tables', [TableController::class, 'tables']);
 Route::get('v1/tables/{id}', [TableController::class, 'singleTable']);
 
+Route::middleware(IsAuthorized::class)->group(function () {
+    Route::post('v1/reservations/{id}', [ReservationsController::class, 'ReserveTable']);
+    Route::get('v1/reservations', [ReservationsController::class, 'getUserReservations']);
+});
+
+
+
 // Reviews Routes
 Route::get('v1/reviews', [ReviewsController::class, 'getAllReviews']);
+
+// Cart Routes
+Route::middleware(IsAuthorized::class)->group(function () {
+    Route::post('v1/cart', [CartItemsController::class, 'addProductToCart']);
+    Route::get('v1/cart', [CartItemsController::class, 'getCartItems']);
+    Route::patch('v1/cart/{id}', [CartItemsController::class, 'addOrMinusQuantity']);
+    Route::delete('v1/cart/{id}', [CartItemsController::class, 'removeProductFromCart']);
+});
+
+// Payment Routes
+Route::middleware(IsAuthorized::class)->group(function () {
+    Route::post('v1/payment', [StripeController::class, 'payment']);
+    Route::get('v1/payment/verify', [StripeController::class, 'verifyPayment']);
+});
+
+// Checkout Product Routes
+Route::middleware(IsAuthorized::class)->group(function () {
+    Route::get('v1/checkouts', [CheckoutsController::class, 'userCheckouts']);
+    Route::get('v1/checkouts/products', [CheckoutsController::class, 'userCheckoutProducts']);
+});
+
+
+
+

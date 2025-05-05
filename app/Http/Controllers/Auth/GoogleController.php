@@ -49,7 +49,7 @@ class GoogleController extends Controller
             $userData = json_encode($userResponse);
             
             // Create redirect response with cookies
-            return redirect()->to('http://localhost:3000/home')
+            return redirect()->to('http://localhost:3000')
             ->cookie('userToken', $token, 525600, null, null, false, false) // 1 year (525600 minutes), HTTP only false to allow JS access
             ->cookie('user', $userData, 525600, null, null, false, false);
         } catch (\Exception $e) {

@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Helpers\handelUploadPhoto;
+use App\Helpers\SecurityHeaders;
+use App\Traits\UserId;
 use Illuminate\Http\Request;
 use App\Models\User;
 class UserController extends Controller
 {
+    use UserId;
+
+
 
     // Signup 
     public function signup(Request $request)
@@ -77,6 +82,45 @@ class UserController extends Controller
             }
             return response()->json([
                 'message' => 'Failed to Login',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    // Logout
+    public function logout(Request $request)
+    {
+        try {
+            $userId = $this->getUserId($request);
+
+            $user = User::find($userId);
+
+            if (!$user) {
+                return self::notFound('User');
+            }
+            ;
+
+            // delete avatar from cloudinary By Job
+            if ($user->avatar_public_id) {
+                \App\Jobs\DeleteUserAvatar::dispatch($user->avatar_public_id);
+            }
+            ;
+
+            // delete user from db
+            $user->delete();
+            // Delete all tokens for the user
+            $user->tokens()->delete();
+            $response = response()->json([
+                'status' => 'success',
+                'message' => 'User Logout successfully',
+            ], 200);
+
+            // secure headers
+            return SecurityHeaders::secureHeaders($response);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to Logout',
                 'error' => $e->getMessage()
             ], 500);
         }
