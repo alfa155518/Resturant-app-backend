@@ -29,8 +29,8 @@ class Table extends Model
         'is_reservable' => 'boolean'
     ];
 
-    public function reservation()
+    public function reservations()
     {
-        return $this->hasMany(Reservations::class);
+        return $this->hasMany(Reservations::class, 'table_id');
     }
 }

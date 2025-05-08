@@ -101,11 +101,13 @@ class ReservationsController extends Controller
                 $table->update([
                     'is_available' => false,
                     'is_reservable' => false,
+                    'status' => 'reserved'
                 ]);
-
+                // $table->save();
                 return SecurityHeaders::secureHeaders(response()->json([
+                    'status' => 'success',
                     'message' => 'Table reserved successfully',
-                    'data' => $reservation
+                    // 'data' => $reservation
                 ], 201));
             });
         } catch (\Exception $e) {
@@ -127,40 +129,114 @@ class ReservationsController extends Controller
         $userId = $this->getUserId($request);
 
 
-        // Fetch tables with their reservations for the user
-        $tables = Table::whereIn('id', function ($query) use ($userId) {
-            $query->select('table_id')
-                ->from('reservations')
-                ->where('user_id', $userId)
-                ->whereNull('deleted_at'); // Respect soft deletes for reservations
-        })
+        // Fetch reservations with their associated tables
+        $reservations = Reservations::where('user_id', $userId)
+            ->whereNull('deleted_at')
             ->with([
-                'reservation' => function ($query) use ($userId) {
-                    $query->where('user_id', $userId)
-                        ->whereNull('deleted_at')
-                        ->select([
-                            'id',
-                            'table_id',
-                            'reservation_date',
-                            'arrival_day',
-                            'reservation_time',
-                            'guest_count',
-                            'status',
-                            'created_at',
-                        ]);
+                'table' => function ($query) {
+                    $query->whereNull('deleted_at')
+                        ->select(['id', 'name', 'image', 'description']);
                 }
             ])
-            ->whereNull('deleted_at') // Respect soft deletes for tables
-            ->get();
+            ->select([
+                'id',
+                'reservation_date',
+                'arrival_day',
+                'reservation_time',
+                'guest_count',
+                'status',
+                'table_id',
+                'created_at',
+            ])
+            ->get()
+            ->map(function ($reservation) {
+                return [
+                    'id' => $reservation->id,
+                    'date' => $reservation->reservation_date->format('Y-m-d'),
+                    'time' => substr($reservation->reservation_time, 0, 5), // e.g., "20:30"
+                    'guests' => $reservation->guest_count,
+                    'status' => $reservation->status,
+                    'table_id' => $reservation->table_id,
+                    'table' => $reservation->table ? [
+                        'name' => $reservation->table->name,
+                        'image' => $reservation->table->image,
+                        'description' => $reservation->table->description,
+                    ] : null,
+                ];
+            });
 
         // Return empty array if no tables found
-        if ($tables->isEmpty()) {
+        if ($reservations->isEmpty()) {
             return self::notFound('Table');
         }
-
-        return response()->json(['data' => $tables], 200);
+        return response()->json(['data' => $reservations], 200);
     }
 
 
+    /**
+     * Cancel a reservation by ID
+     *
+     * @param Request $request
+     * @param int $id Reservation ID
+     * @return JsonResponse
+     */
+    public function cancelReservation(Request $request, $id): JsonResponse
+    {
+        try {
+            $userId = $this->getUserId($request);
+
+            // Use transaction to ensure atomicity and prevent race conditions
+            return DB::transaction(function () use ($userId, $id) {
+                // Find reservation with lock to prevent race conditions
+                $reservation = Reservations::where('user_id', $userId)
+                    ->where('id', $id)
+                    ->lockForUpdate()
+                    ->first();
+
+                if (!$reservation) {
+                    return self::notFound('Reservation');
+                }
+
+                // Check if reservation can be cancelled (not already cancelled)
+                if ($reservation->status === Reservations::STATUS_CANCELLED) {
+                    return SecurityHeaders::secureHeaders(response()->json([
+                        'status' => 'error',
+                        'message' => 'Reservation is already cancelled'
+                    ], 400));
+                }
+
+                // Get the table before deleting the reservation
+                $table = Table::find($reservation->table_id);
+
+                // Update reservation status to cancelled
+                $reservation->status = Reservations::STATUS_CANCELLED;
+                $reservation->save();
+
+                // Update table availability if table exists
+                if ($table) {
+                    $table->update([
+                        'is_available' => true,
+                        'is_reservable' => true,
+                        'status' => 'active'
+                    ]);
+                }
+
+                // Return response with security headers
+                return SecurityHeaders::secureHeaders(response()->json([
+                    'status' => 'success',
+                    'message' => 'Reservation cancelled successfully'
+                ], 200));
+            });
+        } catch (\Exception $e) {
+            // Log the error for debugging
+            \Log::error('Reservation cancellation failed: ' . $e->getMessage(), [
+                'reservation_id' => $id,
+                'user_id' => $userId ?? null,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            return self::serverError();
+        }
+    }
 
 }

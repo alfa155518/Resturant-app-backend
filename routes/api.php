@@ -53,6 +53,7 @@ Route::get('v1/tables/{id}', [TableController::class, 'singleTable']);
 Route::middleware(IsAuthorized::class)->group(function () {
     Route::post('v1/reservations/{id}', [ReservationsController::class, 'ReserveTable']);
     Route::get('v1/reservations', [ReservationsController::class, 'getUserReservations']);
+    Route::delete('v1/reservations/{id}', [ReservationsController::class, 'cancelReservation']);
 });
 
 
