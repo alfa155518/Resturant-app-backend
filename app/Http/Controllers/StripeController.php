@@ -77,10 +77,6 @@ class StripeController extends Controller
                 ],
             ]);
 
-            Log::info('message', [
-                'te' => $session
-            ]);
-
             return response()->json([
                 'data' => [
                     'id' => $session->id,

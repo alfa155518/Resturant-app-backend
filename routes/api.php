@@ -6,8 +6,11 @@ use App\Http\Controllers\Auth\ChangeUserPasswordController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\CartItemsController;
 use App\Http\Controllers\CheckoutsController;
+use App\Http\Controllers\FavoriteProductsController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\ReservationCheckoutsController;
 use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\StripeController;
@@ -81,6 +84,17 @@ Route::middleware(IsAuthorized::class)->group(function () {
     Route::get('v1/checkouts/products', [CheckoutsController::class, 'userCheckoutProducts']);
 });
 
+// Reservation Checkout Routes
+Route::middleware(IsAuthorized::class)->group(function () {
+    Route::post('v1/checkouts/reservation', [ReservationCheckoutsController::class, 'createCheckoutSession']);
+    Route::get('v1/checkouts/reservation/verify', [ReservationCheckoutsController::class, 'verifyPayment']);
+});
 
+// Favorite Products Routes
+Route::middleware(IsAuthorized::class)->group(function () {
+    Route::post('v1/favoriteProducts', [FavoriteProductsController::class, 'addFavoriteProduct']);
+    Route::get('v1/favoriteProducts', [FavoriteProductsController::class, 'getUserFavorites']);
+    Route::delete('v1/favoriteProducts/{id}', [FavoriteProductsController::class, 'removeFavoriteProduct']);
+});
 
 

@@ -147,6 +147,7 @@ class ReservationsController extends Controller
                 'status',
                 'table_id',
                 'created_at',
+
             ])
             ->get()
             ->map(function ($reservation) {
