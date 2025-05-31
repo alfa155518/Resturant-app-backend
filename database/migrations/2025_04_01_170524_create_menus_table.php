@@ -19,12 +19,14 @@ return new class extends Migration {
             $table->string(column: 'image_public_id')->nullable();
             $table->string('category', 50)->index();
             $table->unsignedSmallInteger('calories')->default(0);
-            $table->boolean('popular')->default(true);
             $table->decimal('rating', 3, 1)->default(3);
             $table->string('prepTime', 20)->default('15 min'); // Changed from prep_time to prepTime
             $table->json('dietary')->nullable();
-            $table->json('ingredients');
+            $table->json(column: 'ingredients');
             $table->unsignedSmallInteger('stock')->default(5);
+            $table->boolean('available')->default(true);
+            $table->boolean('popular')->default(false);
+            $table->boolean('featured')->default(false);
             $table->timestamps();
             // Add indexes for commonly queried fields
             $table->index(['price', 'rating']);
@@ -39,3 +41,5 @@ return new class extends Migration {
         Schema::dropIfExists('menus');
     }
 };
+
+// DB::table('migrations')->where('migration', '2025_04_01_170524_create_menus_table')->delete();

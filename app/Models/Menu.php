@@ -7,8 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     protected $fillable = [
-        'menu_id', 'name', 'description', 'price', 'image', 'category', 'popular', 
-        'rating', 'prepTime', 'calories', 'dietary', 'ingredients', 'stock'
+        'menu_id',
+        'name',
+        'description',
+        'price',
+        'image',
+        'image_public_id',
+        'category',
+        'popular',
+        'rating',
+        'prepTime',
+        'calories',
+        'dietary',
+        'ingredients',
+        'stock'
     ];
 
     protected $casts = [

@@ -17,14 +17,14 @@ class FavoriteProducts extends Model
      * @var array<int, string>
      */
     protected $fillable = ['user_id', 'product_id', 'added_at'];
-    
+
     /**
      * The cache TTL in minutes
      * 
      * @var int
      */
     protected const CACHE_TTL = 30;
-    
+
     /**
      * Get the user that owns the favorite product
      *
@@ -44,7 +44,7 @@ class FavoriteProducts extends Model
     {
         return $this->belongsTo(Menu::class, 'product_id');
     }
-    
+
     /**
      * Add a product to user's favorites
      *
@@ -63,19 +63,19 @@ class FavoriteProducts extends Model
                 'added_at' => now(),
             ]
         );
-        
+
         $wasCreated = $favorite->wasRecentlyCreated;
-        
+
         if ($wasCreated) {
             self::invalidateUserCache($userId);
         }
-        
+
         return [
             'favorite' => $favorite,
             'created' => $wasCreated
         ];
     }
-    
+
     /**
      * Remove a product from user's favorites
      *
@@ -89,14 +89,14 @@ class FavoriteProducts extends Model
             'user_id' => $userId,
             'product_id' => $productId,
         ])->delete();
-        
+
         if ($deleted) {
             self::invalidateUserCache($userId);
         }
-        
+
         return (bool) $deleted;
     }
-    
+
     /**
      * Get user's favorite products with caching
      *
@@ -106,7 +106,7 @@ class FavoriteProducts extends Model
     public static function getUserFavorites(int $userId): Collection
     {
         $cacheKey = self::getUserCacheKey($userId);
-        
+
         return Cache::remember($cacheKey, Carbon::now()->addMinutes(self::CACHE_TTL), function () use ($userId) {
             return self::where('user_id', $userId)
                 ->with(['product:id,name,price,image,description,category,rating'])
@@ -114,7 +114,7 @@ class FavoriteProducts extends Model
                 ->get(['id', 'user_id', 'product_id', 'added_at']);
         });
     }
-    
+
     /**
      * Get the cache key for a user's favorites
      *
@@ -125,7 +125,7 @@ class FavoriteProducts extends Model
     {
         return 'user_favorites_' . $userId;
     }
-    
+
     /**
      * Invalidate a user's favorites cache
      *
@@ -137,3 +137,4 @@ class FavoriteProducts extends Model
         Cache::forget(self::getUserCacheKey($userId));
     }
 }
+

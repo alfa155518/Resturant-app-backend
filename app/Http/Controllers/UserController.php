@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Helpers\handelUploadPhoto;
 use App\Helpers\SecurityHeaders;
 use App\Traits\UserId;
 use Illuminate\Http\Request;

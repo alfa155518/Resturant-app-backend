@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AiController;
+
 use App\Http\Controllers\Auth\ChangePersonalUserDataController;
 use App\Http\Controllers\Auth\ChangeUserPasswordController;
 use App\Http\Controllers\Auth\GoogleController;
@@ -9,7 +9,6 @@ use App\Http\Controllers\CheckoutsController;
 use App\Http\Controllers\FavoriteProductsController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ReservationCheckoutsController;
 use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\ReviewsController;
