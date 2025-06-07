@@ -18,6 +18,7 @@ class Checkouts extends Model
         'amount_total',
         'currency',
         'payment_status',
+        'delivery_status',
         'payment_method',
         'payment_date',
         'metadata',

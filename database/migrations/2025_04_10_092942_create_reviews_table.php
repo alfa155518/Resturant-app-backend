@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,6 +17,8 @@ return new class extends Migration
             $table->string('client_email', 191)->nullable();
             $table->unsignedTinyInteger('rating')->comment('1-5 stars');
             $table->text('review');
+            $table->enum('status', ['Published', 'Hidden'])->default('Hidden');
+            $table->text('reply')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

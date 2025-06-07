@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->string('product_name', 191);
             $table->decimal('price', 8, 2)->unsigned();
             $table->integer('quantity')->unsigned();
-            $table->json('product_ids')->nullable();
             $table->timestamps();
         });
     }

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\MenuItemsController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ReservationsController;
+use App\Http\Controllers\Admin\ReviewsController;
 use App\Http\Middleware\IsAdmin;
 
 Route::middleware(IsAdmin::class)->group(function () {
@@ -15,4 +17,14 @@ Route::middleware(IsAdmin::class)->group(function () {
     Route::get('v1/admin/reservations', [ReservationsController::class, 'usersReservations']);
     Route::delete('v1/admin/reservations/{id}', [ReservationsController::class, 'deleteReservation']);
     Route::patch('v1/admin/reservations/{id}', [ReservationsController::class, 'updateReservation']);
+
+    // reviews
+    Route::get('v1/admin/reviews', [ReviewsController::class, 'reviews']);
+    Route::delete('v1/admin/reviews/{id}', [ReviewsController::class, 'deleteReview']);
+    Route::patch('v1/admin/reviews/{id}', [ReviewsController::class, 'updateReview']);
+
+    // orders
+    Route::get('v1/admin/orders', [OrdersController::class, 'allOrders']);
+    Route::patch('v1/admin/orders/{id}', [OrdersController::class, 'updateOrder']);
+    Route::delete('v1/admin/orders/{id}', [OrdersController::class, 'deleteOrder']);
 });

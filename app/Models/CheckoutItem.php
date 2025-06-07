@@ -16,6 +16,7 @@ class CheckoutItem extends Model
         'price',
         'quantity',
         'image',
+        'delivery_status',
     ];
 
     /**
@@ -49,6 +50,7 @@ class CheckoutItem extends Model
                             'created_at',
                             'payment_date',
                             'payment_method',
+                            'delivery_status',
                         );
                     }
                 ])

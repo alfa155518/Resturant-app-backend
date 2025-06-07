@@ -13,6 +13,9 @@ class Reviews extends Model
         'client_email',
         'rating',
         'review',
+        'status',
+        'reply',
+        'updated_at',
     ];
 
     /**
