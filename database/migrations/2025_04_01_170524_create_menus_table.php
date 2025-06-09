@@ -42,4 +42,4 @@ return new class extends Migration {
     }
 };
 
-// DB::table('migrations')->where('migration', '2025_04_29_203624_create_checkout_items_table')->delete();
+// DB::table('migrations')->where('migration', '2025_04_07_061010_create_teams_table')->delete();
