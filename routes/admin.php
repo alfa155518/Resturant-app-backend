@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\MenuItemsController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ReservationsController;
+use App\Http\Controllers\Admin\RestaurantInfoController;
 use App\Http\Controllers\Admin\ReviewsController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Middleware\IsAdmin;
@@ -34,4 +35,9 @@ Route::middleware(IsAdmin::class)->group(function () {
     Route::post('v1/admin/team', [TeamController::class, 'createMember']);
     Route::patch('v1/admin/team/{id}', [TeamController::class, 'updateMember']);
     Route::delete('v1/admin/team/{id}', [TeamController::class, 'deleteMember']);
+
+    // restaurant info
+    Route::get('v1/admin/restaurant/settings', [RestaurantInfoController::class, 'getRestaurantInfo']);
+    Route::patch('v1/admin/restaurant/settings/{id}', [RestaurantInfoController::class, 'updateInfo']);
+    Route::post('v1/admin/restaurant/settings', [RestaurantInfoController::class, 'createInfo']);
 });

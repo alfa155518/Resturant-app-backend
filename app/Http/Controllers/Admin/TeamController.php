@@ -79,7 +79,7 @@ class TeamController extends Controller
             DB::beginTransaction();
 
             // Create the team member
-            $teamMember = Team::create($validatedData);
+            Team::create($validatedData);
 
             // Invalidate cache
             Team::invalidateTeamCache();

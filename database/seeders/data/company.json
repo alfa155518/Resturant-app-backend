@@ -1,0 +1,14 @@
+[
+    {
+        "name": "TechCorp",
+        "address": "123 Innovation Blvd, CA",
+        "phone": "+1-800-555-1234",
+        "email": "contact@techcorp.com",
+        "website": "https://techcorp.com",
+        "logo": "https://via.placeholder.com/150",
+        "message": "Welcome to TechCorp!",
+        "description": "TechCorp is a leader in tech innovation.",
+        "timezone": "America/Los_Angeles",
+        "is_active": true
+    }
+]
