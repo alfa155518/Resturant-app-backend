@@ -1,0 +1,14 @@
+[
+    {
+        "restaurant_infos_id": 1,
+        "new_order": true,
+        "order_status": true,
+        "new_reservation": false,
+        "reservation_reminder": true,
+        "new_review": true,
+        "low_inventory": false,
+        "daily_summary": true,
+        "weekly_summary": true,
+        "marketing_emails": false
+    }
+]

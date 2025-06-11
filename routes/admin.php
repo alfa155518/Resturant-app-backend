@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\MenuItemsController;
+use App\Http\Controllers\Admin\NotificationSettingsController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ReservationsController;
 use App\Http\Controllers\Admin\RestaurantInfoController;
@@ -40,4 +41,8 @@ Route::middleware(IsAdmin::class)->group(function () {
     Route::get('v1/admin/restaurant/settings', [RestaurantInfoController::class, 'getRestaurantInfo']);
     Route::patch('v1/admin/restaurant/settings/{id}', [RestaurantInfoController::class, 'updateInfo']);
     Route::post('v1/admin/restaurant/settings', [RestaurantInfoController::class, 'createInfo']);
+
+    // notification settings
+    Route::get('v1/admin/restaurant/settings', [NotificationSettingsController::class, 'getNotificationSettings']);
+    Route::patch('v1/admin/restaurant/settings/{id}', [NotificationSettingsController::class, 'updateNotificationSettings']);
 });
