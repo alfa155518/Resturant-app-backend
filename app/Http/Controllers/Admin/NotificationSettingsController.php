@@ -7,8 +7,9 @@ use App\Models\Admin\NotificationSettings;
 use App\Traits\AdminSecurityHeaders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Log;
+
 
 class NotificationSettingsController extends Controller
 {

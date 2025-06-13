@@ -50,7 +50,7 @@ class CheckoutItem extends Model
                             'created_at',
                             'payment_date',
                             'payment_method',
-                            'delivery_status',
+                            // 'delivery_status',
                         );
                     }
                 ])

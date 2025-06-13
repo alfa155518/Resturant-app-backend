@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\MenuItemsController;
 use App\Http\Controllers\Admin\NotificationSettingsController;
 use App\Http\Controllers\Admin\OrdersController;
+use App\Http\Controllers\Admin\PaymentMethodsController;
 use App\Http\Controllers\Admin\ReservationsController;
 use App\Http\Controllers\Admin\RestaurantInfoController;
 use App\Http\Controllers\Admin\ReviewsController;
@@ -45,4 +46,8 @@ Route::middleware(IsAdmin::class)->group(function () {
     // notification settings
     Route::get('v1/admin/restaurant/settings', [NotificationSettingsController::class, 'getNotificationSettings']);
     Route::patch('v1/admin/restaurant/settings/{id}', [NotificationSettingsController::class, 'updateNotificationSettings']);
+
+    // payment methods
+    Route::get('v1/admin/restaurant/paymentMethods', [PaymentMethodsController::class, 'getPaymentMethods']);
+    Route::patch('v1/admin/restaurant/paymentMethods', [PaymentMethodsController::class, 'updatePaymentMethods']);
 });

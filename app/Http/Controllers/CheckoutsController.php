@@ -78,7 +78,7 @@ class CheckoutsController extends Controller
         $items = CheckoutItem::getCheckoutsByUserId($userId);
         $meta_data = Checkouts::where('user_id', '=', $userId)->select('metadata')->get();
 
-        // $product_ids = [];
+        $product_ids = [];
         $cart_items = [];
 
         foreach ($meta_data as $data) {
@@ -87,18 +87,19 @@ class CheckoutsController extends Controller
                 $cart_items = is_string($metadata['cart_items'])
                     ? json_decode($metadata['cart_items'], true)
                     : $metadata['cart_items'];
-                // $product_ids = array_column($cart_items, 'product_ids');
+                $product_ids = array_merge($product_ids, array_column($cart_items, 'product_ids'));
             }
         }
 
-        // $menu_items = Menu::whereIn('id', $product_ids)->get()->keyBy('id');
+        $menu_items = Menu::whereIn('id', $product_ids)->get()->keyBy('id');
         $cart_items_by_name = collect($cart_items)->keyBy('name');
 
         $data = [
-            'items' => $items->map(function ($item) use ( // $menu_items, 
-                    $cart_items_by_name) {
+            'items' => $items->map(function ($item) use ($menu_items, $cart_items_by_name) {
                 $cart_item = $cart_items_by_name->get($item->product_name);
                 $product_id = $cart_item['product_ids'] ?? $item->product_ids;
+                $menu_item = $menu_items->get($product_id);
+                
                 return [
                     'id' => $item->id,
                     'checkout_id' => $item->checkout_id,
@@ -106,8 +107,7 @@ class CheckoutsController extends Controller
                     'price' => $item->price,
                     'quantity' => $item->quantity,
                     'product_ids' => $product_id,
-                    'image' => $product_id && isset($menu_items[$product_id]),
-                    // ? // $menu_items[$product_id]->image : null,
+                    'image' => $menu_item ? $menu_item->image : null,
                     'created_at' => $item->created_at,
                     'updated_at' => $item->updated_at,
                     'checkout' => $item->checkout,
