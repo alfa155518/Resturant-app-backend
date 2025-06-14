@@ -4,6 +4,7 @@
 use App\Http\Controllers\Auth\ChangePersonalUserDataController;
 use App\Http\Controllers\Auth\ChangeUserPasswordController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\Auth\TwoFactorController;
 use App\Http\Controllers\CartItemsController;
 use App\Http\Controllers\CheckoutsController;
 use App\Http\Controllers\FavoriteProductsController;
@@ -35,6 +36,9 @@ Route::middleware(IsAuthorized::class)->group(function () {
     Route::post('v1/auth/change-password', [ChangeUserPasswordController::class, 'changeUserPassword']);
     Route::patch('v1/auth/change-personalData', [ChangePersonalUserDataController::class, 'changePersonalData']);
     Route::delete('v1/logout/user', [UserController::class, 'logout']);
+    Route::post('v1/auth/enable-2fa', [TwoFactorController::class, 'enable']);
+    Route::post('v1/auth/verify-2fa', [TwoFactorController::class, 'verify']);
+    Route::delete('v1/auth/disable-2fa', [TwoFactorController::class, 'disable']);
 });
 
 

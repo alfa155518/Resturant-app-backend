@@ -13,7 +13,7 @@ use CloudinaryLabs\CloudinaryLaravel\MediaAlly;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable ,  MediaAlly,HasApiTokens;
+    use HasFactory, Notifiable, MediaAlly, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -31,6 +31,7 @@ class User extends Authenticatable
         'avatar_public_id',
         'address',
         'google_id',
+        'google2fa_secret',
     ];
 
     /**
@@ -91,19 +92,20 @@ class User extends Authenticatable
         ];
     }
 
-    public static function login($request) {
-            // Validate incoming request first
-            $validated = $request->validate([
+    public static function login($request)
+    {
+        // Validate incoming request first
+        $validated = $request->validate([
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:8',
         ]);
 
-         // Then sanitize the validated data
-            $sanitizedData = [
+        // Then sanitize the validated data
+        $sanitizedData = [
             'email' => filter_var(trim($validated['email']), FILTER_SANITIZE_EMAIL),
             'password' => trim($validated['password']),
         ];
- // Check if user exit in Database by email
+        // Check if user exit in Database by email
         $user = self::where('email', $sanitizedData['email'])->first(); // Find user by email
         if (!$user) {
             if (!$user) {
@@ -114,7 +116,17 @@ class User extends Authenticatable
         if (!password_verify($sanitizedData['password'], $user->password)) {
             throw new \Exception('Password Not Correct', 401);
         }
-        return['user' =>$user];
+        return ['user' => $user];
+    }
+
+    public function setGoogle2faSecretAttribute($value)
+    {
+        $this->attributes['google2fa_secret'] = encrypt($value);
+    }
+
+    public function getGoogle2faSecretAttribute($value)
+    {
+        return $value ? decrypt($value) : null;
     }
 
 }
