@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ReservationsController;
 use App\Http\Controllers\Admin\RestaurantInfoController;
 use App\Http\Controllers\Admin\ReviewsController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\OpeningHoursController;
 use App\Http\Middleware\IsAdmin;
 
 Route::middleware(IsAdmin::class)->group(function () {
@@ -50,4 +51,8 @@ Route::middleware(IsAdmin::class)->group(function () {
     // payment methods
     Route::get('v1/admin/restaurant/paymentMethods', [PaymentMethodsController::class, 'getPaymentMethods']);
     Route::patch('v1/admin/restaurant/paymentMethods', [PaymentMethodsController::class, 'updatePaymentMethods']);
+
+    // opening hours
+    Route::get('v1/admin/restaurant/openingHours', [OpeningHoursController::class, 'getOpeningHours']);
+    Route::patch('v1/admin/restaurant/openingHours', [OpeningHoursController::class, 'updateOpeningHours']);
 });
