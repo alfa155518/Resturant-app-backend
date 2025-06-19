@@ -31,22 +31,27 @@ class RestaurantInfoController extends Controller
      */
     public function getRestaurantInfo()
     {
-        // Try to get from cache first
-        $restaurantInfo = Cache::rememberForever($this->cacheKey, function () {
-            return RestaurantInfo::first();
-        });
+        try {
 
-        if (!$restaurantInfo) {
-            return self::notFound('Restaurant info');
+            // Try to get from cache first
+            $restaurantInfo = Cache::rememberForever($this->cacheKey, function () {
+                return RestaurantInfo::first();
+            });
+
+            if (!$restaurantInfo) {
+                return self::notFound('Restaurant info');
+            }
+
+            $response = response()->json([
+                'status' => 'success',
+                'data' => $restaurantInfo
+            ], 200);
+
+            return $this->adminSecurityHeaders($response);
+
+        } catch (\Exception $e) {
+            return self::serverError();
         }
-
-        $response = response()->json([
-            'status' => 'success',
-            'data' => $restaurantInfo
-        ], 200);
-
-        return $this->adminSecurityHeaders($response);
-
     }
 
     /**
@@ -88,7 +93,7 @@ class RestaurantInfoController extends Controller
             $response = response()->json([
                 'status' => 'success',
                 'message' => 'Restaurant info updated successfully',
-                // 'data' => $restaurantInfo->fresh()
+                'data' => $restaurantInfo->fresh()
             ], 200);
 
             return $this->adminSecurityHeaders($response);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\MenuItemsController;
 use App\Http\Controllers\Admin\NotificationSettingsController;
 use App\Http\Controllers\Admin\OrdersController;
@@ -12,47 +13,53 @@ use App\Http\Controllers\Admin\OpeningHoursController;
 use App\Http\Middleware\IsAdmin;
 
 Route::middleware(IsAdmin::class)->group(function () {
-    // menu
-    Route::get('v1/admin/menu', [MenuItemsController::class, 'menuItems']);
-    Route::patch('v1/admin/menu/{id}', [MenuItemsController::class, 'updateMenuItem']);
-    Route::post('v1/admin/menu', [MenuItemsController::class, 'createMenuItem']);
-    Route::delete('v1/admin/menu/{id}', [MenuItemsController::class, 'deleteMenuItem']);
+// menu
+Route::get('v1/admin/menu', [MenuItemsController::class, 'menuItems']);
+Route::patch('v1/admin/menu/{id}', [MenuItemsController::class, 'updateMenuItem']);
+Route::post('v1/admin/menu', [MenuItemsController::class, 'createMenuItem']);
+Route::delete('v1/admin/menu/{id}', [MenuItemsController::class, 'deleteMenuItem']);
 
-    // reservations
-    Route::get('v1/admin/reservations', [ReservationsController::class, 'usersReservations']);
-    Route::delete('v1/admin/reservations/{id}', [ReservationsController::class, 'deleteReservation']);
-    Route::patch('v1/admin/reservations/{id}', [ReservationsController::class, 'updateReservation']);
+// reservations
+Route::get('v1/admin/reservations', [ReservationsController::class, 'usersReservations']);
+Route::delete('v1/admin/reservations/{id}', [ReservationsController::class, 'deleteReservation']);
+Route::patch('v1/admin/reservations/{id}', [ReservationsController::class, 'updateReservation']);
 
-    // reviews
-    Route::get('v1/admin/reviews', [ReviewsController::class, 'reviews']);
-    Route::delete('v1/admin/reviews/{id}', [ReviewsController::class, 'deleteReview']);
-    Route::patch('v1/admin/reviews/{id}', [ReviewsController::class, 'updateReview']);
+// reviews
+Route::get('v1/admin/reviews', [ReviewsController::class, 'reviews']);
+Route::delete('v1/admin/reviews/{id}', [ReviewsController::class, 'deleteReview']);
+Route::patch('v1/admin/reviews/{id}', [ReviewsController::class, 'updateReview']);
 
-    // orders
-    Route::get('v1/admin/orders', [OrdersController::class, 'allOrders']);
-    Route::patch('v1/admin/orders/{id}', [OrdersController::class, 'updateOrder']);
-    Route::delete('v1/admin/orders/{id}', [OrdersController::class, 'deleteOrder']);
+// orders
+Route::get('v1/admin/orders', [OrdersController::class, 'allOrders']);
+Route::patch('v1/admin/orders/{id}', [OrdersController::class, 'updateOrder']);
+Route::delete('v1/admin/orders/{id}', [OrdersController::class, 'deleteOrder']);
 
-    // team
-    Route::get('v1/admin/team', [TeamController::class, 'getMembers']);
-    Route::post('v1/admin/team', [TeamController::class, 'createMember']);
-    Route::patch('v1/admin/team/{id}', [TeamController::class, 'updateMember']);
-    Route::delete('v1/admin/team/{id}', [TeamController::class, 'deleteMember']);
+// team
+Route::get('v1/admin/team', [TeamController::class, 'getMembers']);
+Route::post('v1/admin/team', [TeamController::class, 'createMember']);
+Route::patch('v1/admin/team/{id}', [TeamController::class, 'updateMember']);
+Route::delete('v1/admin/team/{id}', [TeamController::class, 'deleteMember']);
 
-    // restaurant info
-    Route::get('v1/admin/restaurant/settings', [RestaurantInfoController::class, 'getRestaurantInfo']);
-    Route::patch('v1/admin/restaurant/settings/{id}', [RestaurantInfoController::class, 'updateInfo']);
-    Route::post('v1/admin/restaurant/settings', [RestaurantInfoController::class, 'createInfo']);
+// restaurant info
+Route::get('v1/admin/restaurant/settings', [RestaurantInfoController::class, 'getRestaurantInfo']);
+Route::patch('v1/admin/restaurant/settings/{id}', [RestaurantInfoController::class, 'updateInfo']);
+Route::post('v1/admin/restaurant/settings', [RestaurantInfoController::class, 'createInfo']);
 
-    // notification settings
-    Route::get('v1/admin/restaurant/settings', [NotificationSettingsController::class, 'getNotificationSettings']);
-    Route::patch('v1/admin/restaurant/settings/{id}', [NotificationSettingsController::class, 'updateNotificationSettings']);
+// notification settings
+Route::get('v1/admin/restaurant/settings/notifications', [NotificationSettingsController::class, 'getNotificationSettings']);
+Route::patch('v1/admin/restaurant/settings/notifications/{id}', [NotificationSettingsController::class, 'updateNotificationSettings']);
 
-    // payment methods
-    Route::get('v1/admin/restaurant/paymentMethods', [PaymentMethodsController::class, 'getPaymentMethods']);
-    Route::patch('v1/admin/restaurant/paymentMethods', [PaymentMethodsController::class, 'updatePaymentMethods']);
+// payment methods
+Route::get('v1/admin/restaurant/paymentMethods', [PaymentMethodsController::class, 'getPaymentMethods']);
+Route::patch('v1/admin/restaurant/paymentMethods', [PaymentMethodsController::class, 'updatePaymentMethods']);
 
-    // opening hours
-    Route::get('v1/admin/restaurant/openingHours', [OpeningHoursController::class, 'getOpeningHours']);
-    Route::patch('v1/admin/restaurant/openingHours', [OpeningHoursController::class, 'updateOpeningHours']);
+// opening hours
+Route::get('v1/admin/restaurant/openingHours', [OpeningHoursController::class, 'getOpeningHours']);
+Route::patch('v1/admin/restaurant/openingHours', [OpeningHoursController::class, 'updateOpeningHours']);
+
+// customers
+Route::get('v1/admin/customers', [CustomersController::class, 'getCustomers']);
+Route::get('v1/admin/customers/{id}', [CustomersController::class, 'customerDetails']);
+Route::patch('v1/admin/customers/{id}', [CustomersController::class, 'updateCustomer']);
+Route::delete('v1/admin/customers/{id}', [CustomersController::class, 'deleteCustomer']);
 });

@@ -12,13 +12,9 @@ return new class extends Migration {
     {
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('restaurant_infos_id')->constrained()->onDelete('cascade');
-            $table->boolean('credit_card')->default(true);
-            $table->boolean('debit_card')->default(true);
-            $table->boolean('cash')->default(true);
-            $table->boolean('paypal')->default(true);
-            $table->boolean('apple_pay')->default(true);
-            $table->boolean('google_pay')->default(true);
+            $table->foreignId('restaurant_infos_id')->default(1)->constrained()->onDelete('cascade');
+            $table->string('name', 15);
+            $table->boolean('enabled')->default(true);
             $table->timestamps();
         });
     }

@@ -16,18 +16,24 @@ class OrdersController extends Controller
      */
     public function allOrders()
     {
-        $orders = Checkouts::select('id', 'user_id', 'metadata', 'amount_total', 'payment_status', 'payment_date', 'customer_name', 'customer_email', 'delivery_status', 'created_at', 'updated_at')
-            ->where('delivery_status', '!=', 'delivered')
-            ->get();
+        try {
 
-        if (!$orders) {
-            return self::notFound('Orders');
+            $orders = Checkouts::select('id', 'user_id', 'metadata', 'amount_total', 'payment_status', 'payment_date', 'customer_name', 'customer_email', 'delivery_status', 'created_at', 'updated_at')
+                ->where('delivery_status', '!=', 'delivered')
+                ->get();
+
+            if (!$orders) {
+                return self::notFound('Orders');
+            }
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $orders
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error('Error getting orders: ' . $e->getMessage());
+            return self::serverError();
         }
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $orders
-        ], 200);
     }
 
     /**

@@ -1,11 +1,8 @@
 [
-    {
-    "restaurant_infos_id": 1,
-    "credit_card": true,
-    "debit_card": false,
-    "cash": true,
-    "paypal": true,
-    "apple_pay": false,
-    "google_pay": false
-    }
+    { "id": 1, "name": "credit_card", "enabled": true },
+    { "id": 2, "name": "debit_card", "enabled": true },
+    { "id": 3, "name": "cash", "enabled": true },
+    { "id": 4, "name": "paypal", "enabled": false },
+    { "id": 5, "name": "apple_pay", "enabled": true },
+    { "id": 6, "name": "google_pay", "enabled": true }  
 ]

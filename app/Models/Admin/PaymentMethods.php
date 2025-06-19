@@ -9,22 +9,8 @@ use Illuminate\Support\Facades\Cache;
 class PaymentMethods extends Model
 {
     protected $fillable = [
-        'restaurant_infos_id',
-        'credit_card',
-        'debit_card',
-        'cash',
-        'paypal',
-        'apple_pay',
-        'google_pay',
-    ];
-
-    protected $casts = [
-        'credit_card' => 'boolean',
-        'debit_card' => 'boolean',
-        'cash' => 'boolean',
-        'paypal' => 'boolean',
-        'apple_pay' => 'boolean',
-        'google_pay' => 'boolean',
+        'name',
+        'enabled'
     ];
 
     protected $hidden = [
@@ -32,12 +18,10 @@ class PaymentMethods extends Model
     ];
 
     public static $rules = [
-        'credit_card' => 'required|boolean',
-        'debit_card' => 'required|boolean',
-        'cash' => 'required|boolean',
-        'paypal' => 'required|boolean',
-        'apple_pay' => 'required|boolean',
-        'google_pay' => 'required|boolean',
+        'payment_methods' => 'required|array',
+        'payment_methods.*.id' => 'required|integer|exists:payment_methods,id',
+        'payment_methods.*.name' => 'required|string|max:255',
+        'payment_methods.*.enabled' => 'required|boolean',
     ];
     public function restaurantInfo()
     {

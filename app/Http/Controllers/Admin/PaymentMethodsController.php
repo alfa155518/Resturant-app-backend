@@ -24,7 +24,7 @@ class PaymentMethodsController extends Controller
         try {
 
             $paymentMethods = Cache::rememberForever('paymentMethods', function () {
-                return PaymentMethods::first();
+                return PaymentMethods::all();
             });
             if (!$paymentMethods) {
                 return self::notFound('Payment methods not found');
@@ -48,29 +48,38 @@ class PaymentMethodsController extends Controller
     public function updatePaymentMethods(Request $request)
     {
         try {
-
-            $paymentMethods = PaymentMethods::first();
-
-            if (!$paymentMethods) {
-                return self::notFound('Payment methods not found');
-            }
-
+            // Validation
             $validator = Validator::make($request->all(), PaymentMethods::$rules);
-
             if ($validator->fails()) {
                 return self::validationFailed($validator->errors()->first());
             }
 
-            $validatedData = $validator->validated();
+            // Get validated payment_methods array
+            $validatedData = $validator->validated()['payment_methods'];
 
-            $paymentMethods->update($validatedData);
+            // Update each payment method
+            foreach ($validatedData as $methodData) {
+                $paymentMethod = PaymentMethods::find($methodData['id']);
 
+                if (!$paymentMethod) {
+                    return self::notFound("Payment method");
+                }
+
+                $paymentMethod->update([
+                    'name' => $methodData['name'],
+                    'enabled' => $methodData['enabled'],
+                ]);
+            }
+
+            // Clear cache
             PaymentMethods::clearPaymentMethodsCache();
 
+            // Return response
             $response = response()->json([
                 'status' => 'success',
-                'data' => $paymentMethods,
+                'message' => 'Payment methods updated successfully',
             ]);
+
             return $this->adminSecurityHeaders($response);
         } catch (\Exception $e) {
             return self::serverError();

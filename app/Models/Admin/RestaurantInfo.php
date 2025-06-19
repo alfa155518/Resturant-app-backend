@@ -64,7 +64,7 @@ class RestaurantInfo extends Model
         'message' => 'required|string|max:255',
         'description' => 'required|string|max:255',
         'timezone' => 'required|timezone',
-        'is_active' => 'required|boolean',
+        'is_active' => 'required',
     ];
 
 

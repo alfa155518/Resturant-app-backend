@@ -45,19 +45,13 @@ class OpeningHoursController extends Controller
     public function updateOpeningHours(Request $request)
     {
         try {
-            $dayId = $request->input('dayId');
-
-            $openingHours = OpeningHours::find($dayId);
-
-            if (!$openingHours) {
-                return self::notFound('Opening');
-            }
-
+            // Validate the incoming request
             $validation = Validator::make($request->all(), [
-                'dayId' => 'required|exists:opening_hours,id',
-                'open' => 'required|date_format:H:i',
-                'close' => 'required|date_format:H:i',
-                'closed' => 'required|boolean',
+                'hours' => 'required|array',
+                'hours.*.id' => 'required|exists:opening_hours,id',
+                'hours.*.open' => 'required_if:hours.*.closed,false|date_format:H:i:s',
+                'hours.*.close' => 'required_if:hours.*.closed,false|date_format:H:i:s',
+                'hours.*.closed' => 'required|boolean',
             ]);
 
             if ($validation->fails()) {
@@ -66,18 +60,37 @@ class OpeningHoursController extends Controller
 
             $validated = $validation->validated();
 
-            $openingHours->update($validated);
+            // Update each day's hours
+            foreach ($validated['hours'] as $hourData) {
+                $openingHours = OpeningHours::find($hourData['id']);
 
+                if (!$openingHours) {
+                    return self::notFound('hour');
+                }
+
+                $openingHours->update([
+                    'open' => $hourData['open'],
+                    'close' => $hourData['close'],
+                    'closed' => $hourData['closed'],
+                    'updated_at' => now()
+                ]);
+            }
+
+            // Clear cache
             OpeningHours::forgetOpeningHoursCache();
+
+            // Fetch updated hours
+            $updatedHours = OpeningHours::all();
 
             $response = response()->json([
                 'status' => 'success',
-                'data' => $openingHours,
+                'message' => 'Opening hours updated successfully',
+                'data' => $updatedHours
             ]);
-
             return $this->adminSecurityHeaders($response);
+
         } catch (\Exception $e) {
-            Log::error($e->getMessage());
+            Log::error('Failed to update opening hours: ' . $e->getMessage());
             return self::serverError();
         }
     }

@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Admin\RestaurantInfoController;
 use App\Http\Controllers\Auth\ChangePersonalUserDataController;
 use App\Http\Controllers\Auth\ChangeUserPasswordController;
 use App\Http\Controllers\Auth\GoogleController;
@@ -29,6 +30,7 @@ Route::get('v1/auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('v1/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::post('v1/auth/forget-password', [MailController::class, 'forgetPassword']);
 Route::post('v1/auth/reset-password', [MailController::class, 'resetPassword']);
+Route::get('v1/restaurant/info', [RestaurantInfoController::class, 'getRestaurantInfo']);
 
 
 // User Auth Routes
