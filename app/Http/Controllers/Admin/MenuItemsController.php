@@ -70,10 +70,39 @@ class MenuItemsController extends Controller
                 MenuItems::handleImageUpdate($request, $menuItem, $this->uploadHandler, $updateData);
             }
 
-            $updateData = array_merge(
-                $updateData,
-                $request->except(['image', '_method', '_token'])
-            );
+            // Get all request data except image and _method
+            $requestData = $request->except(['image', '_method']);
+
+            // Filter out undefined/null values and prepare data for update
+            $updateData = array_merge($updateData, array_filter($requestData, function ($value) {
+                return $value !== 'undefined' && $value !== null;
+            }));
+
+            // Convert boolean string values to integers
+            $booleanFields = ['available', 'popular', 'featured'];
+            foreach ($booleanFields as $field) {
+                if (isset($updateData[$field])) {
+                    $updateData[$field] = filter_var($updateData[$field], FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
+                }
+            }
+
+            // Cast other numeric fields to appropriate types
+            $numericFields = [
+                'price' => 'float',
+                'calories' => 'int',
+                'rating' => 'float',
+                'stock' => 'int',
+            ];
+
+            foreach ($numericFields as $field => $type) {
+                if (isset($updateData[$field])) {
+                    if ($type === 'float') {
+                        $updateData[$field] = (float) $updateData[$field];
+                    } elseif ($type === 'int') {
+                        $updateData[$field] = (int) $updateData[$field];
+                    }
+                }
+            }
 
             // Update the menu item
             $menuItem->update($updateData);
@@ -81,8 +110,11 @@ class MenuItemsController extends Controller
             // Invalidate cache
             MenuItems::invalidateMenuCache();
 
+
+
             return response()->json([
                 'status' => 'success',
+                'message' => 'Menu item updated successfully',
                 'data' => $menuItem->fresh()
             ], 200);
 
@@ -115,6 +147,33 @@ class MenuItemsController extends Controller
 
             $validatedData = $validator->validated();
 
+            // Convert boolean string values to integers
+            $booleanFields = ['available', 'popular', 'featured'];
+            foreach ($booleanFields as $field) {
+                if (isset($validatedData[$field])) {
+                    $validatedData[$field] = filter_var($validatedData[$field], FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
+                }
+            }
+
+            // Process dietary and ingredients - handle both arrays and comma-separated strings
+            if (isset($validatedData['dietary'])) {
+                if (is_array($validatedData['dietary'])) {
+                    $validatedData['dietary'] = json_encode($validatedData['dietary']);
+                } elseif (is_string($validatedData['dietary'])) {
+                    $items = array_map('trim', explode(',', $validatedData['dietary']));
+                    $validatedData['dietary'] = json_encode($items);
+                }
+            }
+
+            if (isset($validatedData['ingredients'])) {
+                if (is_array($validatedData['ingredients'])) {
+                    $validatedData['ingredients'] = json_encode($validatedData['ingredients']);
+                } elseif (is_string($validatedData['ingredients'])) {
+                    $items = array_map('trim', explode(',', $validatedData['ingredients']));
+                    $validatedData['ingredients'] = json_encode($items);
+                }
+            }
+
             // Handle image upload
             if ($request->hasFile('image')) {
                 MenuItems::handleUploadItemImage($request, $this->uploadHandler, $validatedData);
@@ -128,6 +187,7 @@ class MenuItemsController extends Controller
 
             return response()->json([
                 'status' => 'success',
+                'message' => 'Menu item created successfully',
                 'data' => $menuItem
             ], 201);
 

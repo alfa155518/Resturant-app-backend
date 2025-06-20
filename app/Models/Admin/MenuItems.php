@@ -69,16 +69,16 @@ class MenuItems extends Model
         'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
         'category' => 'required|string|max:50',
         'calories' => 'sometimes|integer|min:0|max:65535',
-        'rating' => 'sometimes|numeric|between:0,10|max:9.9',
+        'rating' => 'sometimes|numeric|between:0,5|max:5',
         'prepTime' => 'required|string|max:20',
         'dietary' => 'required|min:1',
         'dietary.*' => 'string',
         'ingredients' => 'required|min:1',
         'ingredients.*' => 'string',
         'stock' => 'required|integer|min:0',
-        'available' => 'sometimes|boolean',
-        'popular' => 'sometimes|boolean',
-        'featured' => 'sometimes|boolean',
+        'available' => 'sometimes|string|in:true,false,0,1',
+        'popular' => 'sometimes|string|in:true,false,0,1',
+        'featured' => 'sometimes|string|in:true,false,0,1',
     ];
 
     /**
@@ -138,10 +138,10 @@ class MenuItems extends Model
             'image' => $uploadResult['avatar'],
             'image_public_id' => $uploadResult['avatar_public_id']
         ];
+
     }
 
 
-    // ** Handle image upload for create menu item
     /**
      * Handle image upload for create menu item
      *
@@ -171,7 +171,6 @@ class MenuItems extends Model
 
 
 
-    // ** Delete image for menu item
     /**
      * Delete image for menu item
      *
