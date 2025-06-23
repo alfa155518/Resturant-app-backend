@@ -6,12 +6,14 @@ use App\Helpers\handelUploadPhoto;
 use App\Helpers\ValidateId;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\MenuItems;
+use App\Traits\ConvertToJson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class MenuItemsController extends Controller
 {
+    use ConvertToJson;
     protected $uploadHandler;
 
     public function __construct(handelUploadPhoto $uploadHandler)
@@ -110,8 +112,6 @@ class MenuItemsController extends Controller
             // Invalidate cache
             MenuItems::invalidateMenuCache();
 
-
-
             return response()->json([
                 'status' => 'success',
                 'message' => 'Menu item updated successfully',
@@ -155,23 +155,12 @@ class MenuItemsController extends Controller
                 }
             }
 
-            // Process dietary and ingredients - handle both arrays and comma-separated strings
+            // Process dietary and ingredients convert to json
             if (isset($validatedData['dietary'])) {
-                if (is_array($validatedData['dietary'])) {
-                    $validatedData['dietary'] = json_encode($validatedData['dietary']);
-                } elseif (is_string($validatedData['dietary'])) {
-                    $items = array_map('trim', explode(',', $validatedData['dietary']));
-                    $validatedData['dietary'] = json_encode($items);
-                }
+                $this->convertToJson($validatedData, 'dietary');
             }
-
             if (isset($validatedData['ingredients'])) {
-                if (is_array($validatedData['ingredients'])) {
-                    $validatedData['ingredients'] = json_encode($validatedData['ingredients']);
-                } elseif (is_string($validatedData['ingredients'])) {
-                    $items = array_map('trim', explode(',', $validatedData['ingredients']));
-                    $validatedData['ingredients'] = json_encode($items);
-                }
+                $this->convertToJson($validatedData, 'ingredients');
             }
 
             // Handle image upload

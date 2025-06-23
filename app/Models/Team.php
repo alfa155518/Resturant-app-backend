@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Validation\Rule;
 use Log;
 
 class Team extends Model
@@ -30,12 +31,13 @@ class Team extends Model
         'image_public_id',
         'bio',
         'is_active',
+        'updated_at',
     ];
 
     protected $casts = [
         'hire_date' => 'date',
         'salary' => 'integer',
-        'is_active' => 'boolean',
+        // 'is_active' => 'boolean',
     ];
 
     protected $hidden = [
@@ -65,7 +67,7 @@ class Team extends Model
             'unique:teams,email',
             'regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/'
         ],
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         'bio' => 'required|string|max:1000',
         'is_active' => 'required|boolean',
     ];
@@ -78,7 +80,7 @@ class Team extends Model
         'bio' => 'required|string',
         'role' => ['required', 'string', 'in:Head Chef,Sous Chef,Pastry Chef,Line Cook,Prep Cook,Dishwasher,Server,Bartender,Hostess,Busser,Manager'],
         'salary' => 'required|integer|min:0|max:1000000',
-        'is_active' => 'required|boolean',
+        'is_active' => 'required'
     ];
 
 
@@ -94,6 +96,36 @@ class Team extends Model
         'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
         'image.max' => 'The image must not be larger than 2MB.',
     ];
+
+
+    /**
+     * Handle image update for a team member
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Team $teamMember
+     * @param \App\Helpers\handelUploadPhoto $uploadHandler
+     * @param array &$updateData
+     * @return void
+     */
+    public static function handleImageUpdate($request, $teamMember, $uploadHandler, &$updateData)
+    {
+        // Delete old image if exists
+        if ($teamMember->image_public_id) {
+            $uploadHandler->deletePhoto($teamMember->image_public_id);
+        }
+
+        // Upload new image
+        $uploadResult = $uploadHandler->uploadPhoto(
+            $request->file('image'),
+            'team'
+        );
+
+        $updateData = [
+            'image' => $uploadResult['avatar'],
+            'image_public_id' => $uploadResult['avatar_public_id']
+        ];
+
+    }
 
 
 
