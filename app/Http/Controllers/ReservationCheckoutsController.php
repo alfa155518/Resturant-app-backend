@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Stripe\StripeClient;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class ReservationCheckoutsController extends Controller
 {
@@ -68,6 +69,10 @@ class ReservationCheckoutsController extends Controller
             ]);
             return response()->json(['status' => 'success', 'url' => $session->url]);
         } catch (\Exception $e) {
+            Log::error('Error creating checkout session: ' . $e->getMessage(), [
+                'exception' => $e,
+                // 'request_data' => $request->except(['password', 'token'])
+            ]);
             return response()->json([
                 'status' => 'error',
                 'message' => $e->getMessage(),

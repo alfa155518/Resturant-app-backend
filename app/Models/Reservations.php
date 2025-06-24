@@ -98,7 +98,7 @@ class Reservations extends Model
      * @param \Illuminate\Http\Request $request
      * @return bool
      */
-    public static function validateReservationRequest($request)
+    public static function validateReservationRequest($request, $callback)
     {
         $validator = Validator::make($request->all(), [
             'user.name' => 'required|string|max:100',
@@ -144,7 +144,8 @@ class Reservations extends Model
         ]);
 
         if ($validator->fails()) {
-            return self::validationFailed($validator->errors()->first());
+            // return self::validationFailed($validator->errors()->first());
+            return $callback($validator->errors()->first());
         }
 
         return true;

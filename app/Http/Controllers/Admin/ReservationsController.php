@@ -20,7 +20,7 @@ class ReservationsController extends Controller
             $reservations = Reservations::whereNull('deleted_at')->with([
                 'table' => function ($query) {
                     $query->whereNull('deleted_at')
-                        ->select(['id', 'table_number']);
+                        ->select(['id', 'table_number', 'max_guests']);
                 },
                 'user' => function ($query) {
                     $query->select(['id', 'name', 'email', 'phone']);
@@ -74,17 +74,12 @@ class ReservationsController extends Controller
                 return self::notFound('Reservation');
             }
 
-            // Validate request data
-            $validated = Reservations::validateReservationRequest($request);
-            if ($validated instanceof \Illuminate\Http\JsonResponse) {
-                return $validated;
-            }
-
             // Process updates in a single transaction
             $updatedReservation = Reservations::updateReservationWithTransaction($request, $reservation);
 
             return response()->json([
                 'status' => 'success',
+                'message' => 'Reservation updated successfully',
                 'data' => Reservations::formatReservationResponse($updatedReservation)
             ], 200);
         } catch (\Exception $e) {
