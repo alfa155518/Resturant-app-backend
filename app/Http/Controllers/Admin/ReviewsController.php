@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Reviews;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,11 +15,13 @@ class ReviewsController extends Controller
     {
         try {
             // Retrieve reviews with user information
-            $reviews = Reviews::get();
+            $reviews = Cache::rememberForever('admin_reviews', function () {
+                return Reviews::get();
+            });
 
             return response()->json([
                 'status' => 'success',
-                'reviews' => $reviews,
+                'data' => $reviews,
             ], 200);
         } catch (\Exception $e) {
             Log::error('Error fetching reviews: ' . $e->getMessage());
@@ -61,6 +64,8 @@ class ReviewsController extends Controller
                 'updated_at' => now(),
             ]);
 
+            Cache::forget('admin_reviews');
+
             return response()->json([
                 'status' => 'success',
                 'message' => 'Review updated successfully',
@@ -96,6 +101,8 @@ class ReviewsController extends Controller
                     'message' => 'Failed to delete review. Please try again later.'
                 ], 500);
             }
+
+            Cache::forget('admin_reviews');
 
             return response()->json([
                 'status' => 'success',
