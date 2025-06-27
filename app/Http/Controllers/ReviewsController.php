@@ -22,7 +22,7 @@ class ReviewsController extends Controller
             }
 
             // Retrieve reviews with user information
-            $reviews = Reviews::query()
+            $reviews = Reviews::query()->where('status', 'Published')
                 ->select(['id', 'user_id', 'client_name', 'rating', 'review', 'created_at'])
                 ->with([
                     'user' => function ($query) {
@@ -42,7 +42,7 @@ class ReviewsController extends Controller
                     'last_page' => $reviews->lastPage(),
                 ]
             ], 200)->header('Cache-Control', 'public, max-age=300');
-              // Apply security headers
+            // Apply security headers
             return SecurityHeaders::secureHeaders($response);
 
         } catch (\Exception $e) {

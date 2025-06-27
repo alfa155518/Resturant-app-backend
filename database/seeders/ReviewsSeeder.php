@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Reviews;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 class ReviewsSeeder extends Seeder

@@ -33,8 +33,9 @@ class CustomersController extends Controller
     public function getCustomers()
     {
         // Get all customers with selected fields
-        $customers = User::where('role', 'customer')
-            ->select(['id', 'avatar', 'name', 'email', 'phone', 'created_at', 'is_active'])
+        $customers = User::query()
+            // where('role', 'customer')
+            ->select(['id', 'avatar', 'name', 'email', 'address', 'phone', 'role', 'created_at', 'is_active'])
             ->get();
 
         // Get order statistics for each customer
@@ -55,10 +56,12 @@ class CustomersController extends Controller
                     $stats = $orderStats->get($customer->id);
 
                     return [
+                        'id' => $customer->id,
                         'avatar' => $customer->avatar,
                         'name' => $customer->name,
                         'email' => $customer->email,
                         'phone' => $customer->phone,
+                        'role' => $customer->role,
                         'created_at' => $customer->created_at,
                         'is_active' => $customer->is_active,
                         'amount_total' => $stats->total_amount ?? 0,
@@ -88,7 +91,7 @@ class CustomersController extends Controller
     public function customerDetails($id)
     {
         $customer = User::where('id', $id)
-            ->select(['id', 'avatar', 'name', 'email', 'address', 'phone', 'created_at', 'is_active'])
+            ->select(['id', 'avatar', 'name', 'email', 'address', 'phone', 'role', 'created_at', 'is_active'])
             ->first();
 
         if (!$customer) {
@@ -123,9 +126,14 @@ class CustomersController extends Controller
 
             $customer->orders = $orders;
 
+            // Convert the customer to an array and include the created_at field
+            $customerData = array_merge($customer->toArray(), [
+                'created_at' => $customer->created_at ? $customer->created_at->toDateTimeString() : null
+            ]);
+
             $response = response()->json([
                 'status' => 'success',
-                'data' => $customer
+                'data' => $customerData
             ]);
 
             return $this->adminSecurityHeaders($response);
@@ -154,8 +162,8 @@ class CustomersController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:20',
                 'email' => 'required|email|max:50',
-                'phone' => 'required|string|max:20',
-                'address' => 'required|string|max:255',
+                'phone' => 'max:20',
+                'address' => 'max:50',
                 'role' => 'required|string|max:20|in:customer,admin,super-admin',
                 'is_active' => 'required|boolean',
             ]);

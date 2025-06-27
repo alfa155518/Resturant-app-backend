@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Traits\UserCartItems;
 use App\Traits\UserId;
+use Illuminate\Support\Facades\Cache;
 use Stripe\StripeClient;
 use Exception;
 use Illuminate\Support\Facades\Log;
@@ -153,6 +154,8 @@ class StripeController extends Controller
                 // Delete Cart Items For User
                 $userId = $this->getUserId($request);
                 CartItems::where('user_id', $userId)->delete();
+                Cache::forget('customer_orders_' . $userId);
+                Cache::forget('customers_with_orders');
 
                 return SecurityHeaders::secureHeaders($response);
             }
