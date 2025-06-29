@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Checkouts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class OrdersController extends Controller
 {
@@ -17,9 +18,7 @@ class OrdersController extends Controller
     public function allOrders()
     {
         try {
-
             $orders = Checkouts::select('id', 'user_id', 'metadata', 'amount_total', 'payment_status', 'payment_date', 'customer_name', 'customer_email', 'delivery_status', 'created_at', 'updated_at')
-                ->where('delivery_status', '!=', 'delivered')
                 ->get();
 
             if (!$orders) {
@@ -47,18 +46,24 @@ class OrdersController extends Controller
     {
         try {
 
-            $validated = $request->validate([
+            $validated = Validator::make($request->all(), [
                 'delivery_status' => 'required|in:pending,delivered,completed,cancelled',
             ]);
+
             $order = Checkouts::find($id);
 
             if (!$order) {
                 return self::notFound('Order');
             }
 
+            if ($validated->fails()) {
+                return self::validationFailed($validated->errors()->first());
+            }
+
             $order->update([
-                'delivery_status' => $validated['delivery_status'],
+                'delivery_status' => $validated->validated()['delivery_status'],
             ]);
+
 
             return response()->json([
                 'status' => 'success',
