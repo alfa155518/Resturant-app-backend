@@ -31,7 +31,7 @@ Route::get('v1/auth/google/callback', [GoogleController::class, 'handleGoogleCal
 Route::post('v1/auth/forget-password', [MailController::class, 'forgetPassword']);
 Route::post('v1/auth/reset-password', [MailController::class, 'resetPassword']);
 Route::get('v1/restaurant/info', [RestaurantInfoController::class, 'getRestaurantInfo']);
-
+Route::post('v1/contact', [MailController::class, 'contactMessage']);
 
 // User Auth Routes
 Route::middleware(IsAuthorized::class)->group(function () {
