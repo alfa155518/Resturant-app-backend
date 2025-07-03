@@ -60,13 +60,12 @@ Route::get('v1/team/{id}', [TeamController::class, 'teamMember']);
 Route::get('v1/tables', [TableController::class, 'tables']);
 Route::get('v1/tables/{id}', [TableController::class, 'singleTable']);
 
+// Reservations Routes
 Route::middleware(IsAuthorized::class)->group(function () {
     Route::post('v1/reservations/{id}', [ReservationsController::class, 'ReserveTable']);
     Route::get('v1/reservations', [ReservationsController::class, 'getUserReservations']);
     Route::delete('v1/reservations/{id}', [ReservationsController::class, 'cancelReservation']);
 });
-
-
 
 // Reviews Routes
 Route::get('v1/reviews', [ReviewsController::class, 'getAllReviews']);

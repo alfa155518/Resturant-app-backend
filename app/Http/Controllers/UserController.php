@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Helpers\handelUploadPhoto;
 use App\Helpers\SecurityHeaders;
 use App\Traits\UserId;
 use Illuminate\Http\Request;
@@ -9,7 +10,12 @@ class UserController extends Controller
 {
     use UserId;
 
+    protected $uploadHandler;
 
+    public function __construct(handelUploadPhoto $uploadHandler)
+    {
+        $this->uploadHandler = $uploadHandler;
+    }
 
     // Signup 
     public function signup(Request $request)
@@ -101,7 +107,7 @@ class UserController extends Controller
 
             // delete avatar from cloudinary By Job
             if ($user->avatar_public_id) {
-                \App\Jobs\DeleteUserAvatar::dispatch($user->avatar_public_id);
+                $this->uploadHandler->deletePhoto($user->avatar_public_id);
             }
             ;
 

@@ -91,7 +91,7 @@ class ChangePersonalUserDataController extends Controller
 
                 $user->avatar = $uploadResult['avatar'];
                 $user->avatar_public_id = $uploadResult['avatar_public_id'];
-            }elseif ($request->has('avatar') && is_string($request->avatar)) {
+            } elseif ($request->has('avatar') && is_string($request->avatar)) {
                 // Handle URL
                 $user->avatar = $request->avatar;
             }
@@ -104,6 +104,9 @@ class ChangePersonalUserDataController extends Controller
                 'phone' => $user->phone,
                 'address' => $user->address,
                 'avatar' => $user->avatar,
+                'role' => $user->role,
+                'google2fa_secret' => $user->google2fa_secret,
+                'created_at' => $user->created_at,
             ];
 
             $response = response()->json([

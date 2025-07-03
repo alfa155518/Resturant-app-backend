@@ -32,6 +32,7 @@ class User extends Authenticatable
         'address',
         'google_id',
         'google2fa_secret',
+        'created_at',
     ];
 
     /**
@@ -43,7 +44,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'updated_at',
-        'created_at',
         'avatar_public_id',
     ];
 

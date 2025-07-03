@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Http\Controllers\UserController;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Laravel\Sanctum\PersonalAccessToken;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -27,6 +28,7 @@ class IsAuthorized
             ], 401);
         }
 
+        Log::info(message: $bearerToken);
         $token = str_replace('Bearer ', '', $bearerToken);
 
         // Find token in database
@@ -34,7 +36,8 @@ class IsAuthorized
 
         //check if token in database
         if (!$tokenModel) {
-            return new UserController()->unauthorized("You must be Logged In");
+            $userController = app()->make(UserController::class);
+            return $userController->unauthorized("You must be Logged In");
         }
 
         return $next($request);
