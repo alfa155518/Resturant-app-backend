@@ -1,0 +1,268 @@
+[
+    {
+      "id": 1,
+      "likes": [1, 2, 3],
+      "dislikes": [4],
+      "title": "Seasonal Menu: Spring Delights",
+      "excerpt": "Discover our new spring menu featuring fresh, seasonal ingredients and innovative dishes.",
+      "content": "<p>Spring has arrived, and with it comes a bounty of fresh, seasonal ingredients that inspire our chefs to create innovative and delightful dishes.</p><p>Our new spring menu celebrates the vibrant flavors of the season, featuring locally-sourced produce, tender spring vegetables, and aromatic herbs.</p><p>From our delicate asparagus risotto to our succulent lamb with mint pesto, each dish is crafted to showcase the best of spring's offerings.</p><p>Join us for a culinary journey through the season's finest ingredients and experience the freshness and vitality of spring on your plate.</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570614/blogs/Seasonal-Menu-Spring-Delights_kuxz4o.webp",
+      "author": "Chef Maria Rodriguez",
+      "publishDate": "2025-04-15",
+      "category": "Menu Updates",
+      "tags": ["spring", "seasonal", "fresh ingredients"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "John Doe", "content": "The spring menu is absolutely amazing! The lamb with mint pesto was to die for.", "date": "2025-04-16T14:30:00Z" },
+        { "id": 2, "name": "Sarah Johnson", "content": "Can’t wait to try the new asparagus risotto next week!", "date": "2025-04-17T09:15:00Z" },
+        { "id": 3, "name": "Sarah Johnson", "content": "Can’t wait to try the new asparagus risotto next week!", "date": "2025-04-17T09:15:00Z" },
+        { "id": 4, "name": "Sarah Johnson", "content": "Can’t wait to try the new asparagus risotto next week!", "date": "2025-04-17T09:15:00Z" },
+        { "id": 5, "name": "Sarah Johnson", "content": "Can’t wait to try the new asparagus risotto next week!", "date": "2025-04-17T09:15:00Z" }
+      ]
+    },
+    {
+      "id": 2,
+      "likes": [5, 6],
+      "dislikes": [7],
+      "title": "Summer Cocktails: Refreshing New Drinks",
+      "excerpt": "Beat the heat with our new summer cocktail menu, crafted with fresh fruits and bold flavors.",
+      "content": "<p>Summer is here, and our mixologists have been hard at work creating a lineup of refreshing cocktails to keep you cool.</p><p>From our zesty citrus mojito to our tropical mango margarita, each drink is designed to complement the warm weather with vibrant, fresh flavors.</p><p>We’ve sourced the juiciest fruits and paired them with premium spirits to elevate your summer dining experience.</p><p>Visit us this week to sip on these refreshing creations!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570615/blogs/Summer-Cocktails-Refreshing-New-Drinks_njf3w7.webp",
+      "author": "Mixologist James Carter",
+      "publishDate": "2025-06-01",
+      "category": "Beverages",
+      "tags": ["summer", "cocktails", "refreshing"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Emily Chen", "content": "The mango margarita is a game-changer! So refreshing!", "date": "2025-06-02T17:45:00Z" },
+        { "id": 2, "name": "Michael Lee", "content": "Loved the citrus mojito, perfect for summer evenings.", "date": "2025-06-03T12:20:00Z" }
+      ]
+    },
+    {
+        "id": 3,
+      "likes": [8, 9, 10],
+      "dislikes": [1, 11],
+      "title": "Fall Harvest: New Seasonal Dishes",
+      "excerpt": "Our fall menu highlights the rich, warm flavors of the season with hearty dishes.",
+      "content": "<p>As the leaves turn, our kitchen embraces the cozy flavors of fall with a new menu inspired by the harvest.</p><p>Think roasted root vegetables, savory pumpkin soups, and our signature apple cider-glazed pork.</p><p>Each dish is crafted to bring warmth and comfort to your dining experience, using ingredients sourced from local farms.</p><p>Join us to savor the essence of autumn!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570610/blogs/New-Seasonal-Dishes_c81mwl.webp",
+      "author": "Chef Liam Thompson",
+      "publishDate": "2025-09-10",
+      "category": "Menu Updates",
+      "tags": ["fall", "harvest", "seasonal"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Anna Patel", "content": "The pumpkin soup was incredible! Perfect for fall.", "date": "2025-09-11T10:00:00Z" }
+      ]
+    },
+    {
+      "id": 4,
+        "likes": [12, 13],
+      "dislikes": [14, 15, 16],
+      "title": "Winter Warmers: Cozy Comfort Foods",
+      "excerpt": "Warm up this winter with our hearty, soul-warming dishes designed for cold days.",
+      "content": "<p>Winter calls for comfort, and our new menu delivers with rich, hearty dishes that warm the soul.</p><p>From our slow-braised beef stew to our creamy truffle macaroni, every bite is crafted to bring coziness to your table.</p><p>We’ve also introduced a hot spiced mulled wine to pair perfectly with these dishes.</p><p>Come in from the cold and enjoy a meal that feels like a warm hug!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570609/blogs/Cozy-Comfort-Foods_uvdyrj.webp",
+      "author": "Chef Olivia Grant",
+      "publishDate": "2025-12-01",
+      "category": "Menu Updates",
+      "tags": ["winter", "comfort food", "hearty"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "David Kim", "content": "The beef stew was amazing, but the mulled wine stole the show!", "date": "2025-12-02T19:10:00Z" },
+        { "id": 2, "name": "Lisa Wong", "content": "Not a fan of the truffle mac, but the stew was great.", "date": "2025-12-03T08:50:00Z" }
+      ]
+    },
+    {
+      "id": 5,
+      "likes": [17, 18, 19, 20],
+      "dislikes": [21],
+      "title": "Farm-to-Table: Our Local Sourcing Story",
+      "excerpt": "Learn about our commitment to sourcing ingredients from local farms and producers.",
+      "content": "<p>At our restaurant, we believe in supporting local farmers and bringing the freshest ingredients to your plate.</p><p>Our farm-to-table philosophy ensures that every dish is made with care, using produce, meats, and dairy from nearby farms.</p><p>From crisp greens to succulent meats, every ingredient tells a story of quality and sustainability.</p><p>Join us to experience the difference that local sourcing makes!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570613/blogs/Our-Local-Sourcing-Story_fsnqkf.webp",
+      "author": "Manager Sarah Brooks",
+      "publishDate": "2025-03-20",
+      "category": "Sustainability",
+      "tags": ["farm-to-table", "local", "sustainability"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Rachel Green", "content": "Love knowing my food comes from local farms!", "date": "2025-03-21T11:25:00Z" }
+      ]
+    },
+    {
+      "id": 6,
+      "likes": [22, 23],
+      "dislikes": [],
+      "title": "Vegan Delights: New Plant-Based Menu",
+      "excerpt": "Explore our new vegan menu, packed with bold flavors and creative dishes.",
+      "content": "<p>We’re excited to introduce our new vegan menu, designed to delight plant-based diners and foodies alike.</p><p>From our creamy cashew-based pasta to our roasted vegetable quinoa bowl, every dish is bursting with flavor.</p><p>We’ve worked closely with local producers to ensure every ingredient is fresh and sustainable.</p><p>Come try our vegan creations and discover a new favorite!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570610/blogs/New-Plant-Based-Menu_eef3cd.webp",
+      "author": "Chef Emma Davis",
+      "publishDate": "2025-05-05",
+      "category": "Menu Updates",
+      "tags": ["vegan", "plant-based", "healthy"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Tom Nguyen", "content": "The quinoa bowl is my new go-to! So flavorful!", "date": "2025-05-06T13:40:00Z" },
+        { "id": 2, "name": "Clara Smith", "content": "Finally, a vegan menu that doesn’t compromise on taste!", "date": "2025-05-07T09:00:00Z" }
+      ]
+    },
+    {
+      "id": 7,
+      "likes": [24, 25, 26, 27],
+      "dislikes": [28],
+      "title": "Wine Pairing Nights: A Taste of Elegance",
+      "excerpt": "Join us for exclusive wine pairing evenings with our curated menu.",
+      "content": "<p>Elevate your dining experience with our monthly wine pairing nights, where our sommelier pairs exquisite wines with a curated menu.</p><p>Each course is thoughtfully designed to complement the wine’s unique profile, from crisp whites to bold reds.</p><p>Our next event features a five-course tasting menu with wines from renowned vineyards.</p><p>Reserve your spot for an evening of elegance and flavor!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570609/blogs/A-Taste-of-Elegance_v7jman.webp",
+      "author": "Sommelier Claire Dubois",
+      "publishDate": "2025-07-12",
+      "category": "Events",
+      "tags": ["wine", "pairing", "events"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Mark Evans", "content": "The wine pairing was fantastic! Can’t wait for the next one.", "date": "2025-07-13T20:15:00Z" }
+      ]
+    },
+    {
+      "id": 8,
+      "likes": [29, 30],
+      "dislikes": [31],
+      "title": "Behind the Scenes: Meet Our Chefs",
+      "excerpt": "Get to know the talented chefs behind our innovative dishes.",
+      "content": "<p>Our kitchen is powered by a team of passionate chefs who bring creativity and expertise to every dish.</p><p>From classically trained culinary artists to innovative flavor creators, our team is dedicated to making your dining experience unforgettable.</p><p>Learn about their inspirations, training, and favorite dishes in this exclusive feature.</p><p>Come meet the faces behind the food!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570609/blogs/Meet-Our-Chefs_sqdd5x.webp",
+      "author": "Editor Jane Miller",
+      "publishDate": "2025-02-10",
+      "category": "Our Team",
+      "tags": ["chefs", "behind the scenes", "culinary"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Laura Brown", "content": "Loved learning about the chefs! So much talent.", "date": "2025-02-11T15:30:00Z" }
+      ]
+    },
+    {
+      "id": 9,
+      "likes": [32, 33, 34, 35],
+      "dislikes": [],
+      "title": "Dessert Dreams: New Sweet Creations",
+      "excerpt": "Indulge in our new dessert menu, featuring decadent treats for every sweet tooth.",
+      "content": "<p>Our pastry chefs have outdone themselves with our new dessert menu, designed to satisfy every sweet craving.</p><p>From our silky chocolate mousse to our tangy lemon tart, each dessert is a work of art.</p><p>Pair your treat with one of our specialty coffees or dessert wines for the perfect finish.</p><p>Come indulge in a sweet escape!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570610/blogs/New-Sweet-Creations_wb5hzs.webp",
+      "author": "Pastry Chef Sophie Lee",
+      "publishDate": "2025-08-20",
+      "category": "Menu Updates",
+      "tags": ["desserts", "sweets", "pastry"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Sophie Carter", "content": "The lemon tart was divine! Perfect balance of flavors.", "date": "2025-08-21T16:50:00Z" },
+        { "id": 2, "name": "James Wilson", "content": "Chocolate mousse was a bit too rich for me, but beautifully made.", "date": "2025-08-22T10:10:00Z" }
+      ]
+    },
+    {
+      "id": 10,
+      "likes": [36, 37, 38, 39],
+      "dislikes": [40],
+      "title": "Sustainable Seafood: Ocean-Friendly Choices",
+      "excerpt": "Discover our new seafood menu, sourced sustainably from responsible fisheries.",
+      "content": "<p>We’re committed to protecting our oceans, which is why our new seafood menu features only sustainably sourced fish and shellfish.</p><p>From our grilled wild-caught salmon to our seared scallops, each dish is both delicious and environmentally responsible.</p><p>We work with certified fisheries to ensure every bite supports ocean health.</p><p>Dive into our new menu today!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570613/blogs/Ocean-Friendly-Choices_aiaw3y.webp",
+      "author": "Chef Noah Adams",
+      "publishDate": "2025-06-15",
+      "category": "Sustainability",
+      "tags": ["seafood", "sustainability", "ocean-friendly"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Ella Foster", "content": "The scallops were amazing, and I love the sustainability focus!", "date": "2025-06-16T18:20:00Z" }
+      ]
+    },
+    {
+      "id": 11,
+      "likes": [41, 42],
+      "dislikes": [43, 44, 45],
+      "title": "Brunch Bliss: New Weekend Menu",
+      "excerpt": "Start your weekend with our new brunch menu, packed with bold flavors.",
+      "content": "<p>Weekends just got tastier with our new brunch menu, featuring both classic and innovative dishes.</p><p>From fluffy pancakes with seasonal berries to our savory avocado toast with poached eggs, there’s something for everyone.</p><p>Pair your meal with our signature mimosas or freshly brewed coffee.</p><p>Join us for a brunch experience like no other!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570612/blogs/New-Weekend-Menu_iq9mw5.webp",
+      "author": "Chef Mia Clark",
+      "publishDate": "2025-04-25",
+      "category": "Menu Updates",
+      "tags": ["brunch", "weekend", "breakfast"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Chris Taylor", "content": "The pancakes were fluffy perfection!", "date": "2025-04-26T11:00:00Z" },
+        { "id": 2, "name": "Kelly Adams", "content": "Avocado toast was good, but a bit overpriced.", "date": "2025-04-27T09:30:00Z" }
+      ]
+    },
+    {
+      "id": 12,
+      "likes": [46, 47],
+      "dislikes": [],
+      "title": "Craft Beer Pairings: A New Experience",
+      "excerpt": "Explore our new craft beer pairings, curated to complement our bold dishes.",
+      "content": "<p>We’ve partnered with local breweries to bring you a unique craft beer pairing experience.</p><p>From hoppy IPAs to smooth stouts, each beer is selected to enhance the flavors of our dishes, like our spicy chicken sliders or smoked brisket.</p><p>Our beer experts are here to guide you through the pairings for a perfect meal.</p><p>Raise a glass to great food and great brews!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570609/blogs/Craft-Beer-Pairings-A-New-Experience_d5spfo.webp",
+      "author": "Beer Expert Ryan Patel",
+      "publishDate": "2025-07-25",
+      "category": "Beverages",
+      "tags": ["craft beer", "pairings", "local"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Sam Rivera", "content": "The IPA with the sliders was a match made in heaven!", "date": "2025-07-26T19:00:00Z" }
+      ]
+    },
+    {
+      "id": 13,
+      "likes": [48, 49, 50],
+      "dislikes": [51],
+      "title": "Kids’ Menu: Fun and Flavorful Options",
+      "excerpt": "Our new kids’ menu is designed to please even the pickiest eaters.",
+      "content": "<p>Dining with the family? Our new kids’ menu is packed with fun, flavorful options that kids will love.</p><p>From mini gourmet burgers to cheesy pasta bakes, every dish is made with fresh ingredients and kid-friendly flavors.</p><p>We’ve also added healthy sides like carrot sticks and fruit cups.</p><p>Bring the whole family for a meal everyone will enjoy!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570609/blogs/Kids-Menu-Fun-and-Flavorful-Options_imgtqa.webp",
+      "author": "Chef Lily Evans",
+      "publishDate": "2025-03-15",
+      "category": "Menu Updates",
+      "tags": ["kids", "family", "healthy"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Megan Hall", "content": "My kids loved the mini burgers! Great options.", "date": "2025-03-16T12:45:00Z" }
+      ]
+    },
+    {
+      "id": 14,
+      "likes": [52, 53, 54],
+      "dislikes": [55],
+      "title": "Cooking Classes: Learn from Our Chefs",
+      "excerpt": "Join our new cooking classes and learn to cook like a pro with our chefs.",
+      "content": "<p>Want to elevate your cooking skills? Our new cooking classes offer hands-on lessons with our talented chefs.</p><p>Learn techniques for everything from pasta-making to dessert artistry, using fresh, seasonal ingredients.</p><p>Classes are open to all skill levels, and you’ll leave with new recipes and confidence.</p><p>Sign up today for a fun, flavorful experience!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570609/blogs/Learn-from-Our-Chefs_hoofry.webp",
+      "author": "Chef Daniel Kim",
+      "publishDate": "2025-05-30",
+      "category": "Events",
+      "tags": ["cooking classes", "learn", "culinary"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Grace Lee", "content": "The pasta-making class was so much fun! Learned a lot.", "date": "2025-05-31T14:20:00Z" },
+        { "id": 2, "name": "Ethan Moore", "content": "Can’t wait for the dessert class next month!", "date": "2025-06-01T10:15:00Z" }
+      ]
+    },
+    {
+      "id": 15,
+      "likes": [62, 63],
+      "dislikes": [64, 65, 66],
+      "title": "Holiday Feasts: Special Menus for the Season",
+      "excerpt": "Celebrate the holidays with our special menus, perfect for festive gatherings.",
+      "content": "<p>The holiday season is upon us, and we’re excited to unveil our special holiday menus.</p><p>From roasted turkey with all the trimmings to our decadent yule log dessert, each dish is crafted to bring joy to your celebrations.</p><p>We’re also offering festive cocktails and mocktails to toast the season.</p><p>Book your holiday gathering with us today!</p>",
+      "image": "https://res.cloudinary.com/duumkzqwx/image/upload/v1751570615/blogs/Special-Menus-for-the-Season_y10itb.webp",
+      "author": "Chef Isabella Wong",
+      "publishDate": "2025-11-15",
+      "category": "Menu Updates",
+      "tags": ["holidays", "festive", "celebration"],
+      "status": "Published",
+      "comments": [
+        { "id": 1, "name": "Olivia Scott", "content": "The holiday menu looks amazing! Already booked our table.", "date": "2025-11-16T13:30:00Z" },
+        { "id": 2, "name": "Henry Davis", "content": "The yule log dessert was a highlight of our meal!", "date": "2025-11-17T09:40:00Z" }
+      ]
+    }
+  ]

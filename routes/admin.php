@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\MenuItemsController;
 use App\Http\Controllers\Admin\NotificationSettingsController;
@@ -50,15 +51,12 @@ Route::middleware(IsAdmin::class)->group(function () {
     Route::post('v1/admin/restaurant/settings', [RestaurantInfoController::class, 'createInfo']);
 
     // notification settings
-    // Route::get('v1/admin/restaurant/settings/notifications', [NotificationSettingsController::class, 'getNotificationSettings']);
     Route::patch('v1/admin/restaurant/settings/notifications/{id}', [NotificationSettingsController::class, 'updateNotificationSettings']);
 
     // payment methods
-    // Route::get('v1/admin/restaurant/paymentMethods', [PaymentMethodsController::class, 'getPaymentMethods']);
     Route::patch('v1/admin/restaurant/paymentMethods', [PaymentMethodsController::class, 'updatePaymentMethods']);
 
     // opening hours
-    // Route::get('v1/admin/restaurant/openingHours', [OpeningHoursController::class, 'getOpeningHours']);
     Route::patch('v1/admin/restaurant/openingHours', [OpeningHoursController::class, 'updateOpeningHours']);
 
     // customers
@@ -66,6 +64,14 @@ Route::middleware(IsAdmin::class)->group(function () {
     Route::get('v1/admin/customers/{id}', [CustomersController::class, 'customerDetails']);
     Route::patch('v1/admin/customers/{id}', [CustomersController::class, 'updateCustomer']);
     Route::delete('v1/admin/customers/{id}', [CustomersController::class, 'deleteCustomer']);
+
+
+    // blogs
+    Route::post('v1/admin/blogs', [BlogController::class, 'addBlog']);
+    Route::patch('v1/admin/blogs/{id}/like', [BlogController::class, 'likeBlog']);
+    Route::patch('v1/admin/blogs/{id}/dislike', [BlogController::class, 'dislikeBlog']);
+    Route::patch('v1/admin/blogs/{id}', [BlogController::class, 'updateBlog']);
+    Route::delete('v1/admin/blogs/{id}', [BlogController::class, 'deleteBlog']);
 });
 
 // notification settings
