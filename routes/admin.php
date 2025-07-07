@@ -68,8 +68,7 @@ Route::middleware(IsAdmin::class)->group(function () {
 
     // blogs
     Route::post('v1/admin/blogs', [BlogController::class, 'addBlog']);
-    Route::patch('v1/admin/blogs/{id}/like', [BlogController::class, 'likeBlog']);
-    Route::patch('v1/admin/blogs/{id}/dislike', [BlogController::class, 'dislikeBlog']);
+
     Route::patch('v1/admin/blogs/{id}', [BlogController::class, 'updateBlog']);
     Route::delete('v1/admin/blogs/{id}', [BlogController::class, 'deleteBlog']);
 });

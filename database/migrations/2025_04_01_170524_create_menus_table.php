@@ -42,4 +42,4 @@ return new class extends Migration {
     }
 };
 
-// DB::table('migrations')->where('migration', '2025_04_10_092942_create_reviews_table')->delete();
+// DB::table('migrations')->where('migration', '2025_07_03_130911_create_blogs_table')->delete();

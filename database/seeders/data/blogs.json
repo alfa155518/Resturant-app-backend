@@ -13,11 +13,8 @@
       "tags": ["spring", "seasonal", "fresh ingredients"],
       "status": "Published",
       "comments": [
-        { "id": 1, "name": "John Doe", "content": "The spring menu is absolutely amazing! The lamb with mint pesto was to die for.", "date": "2025-04-16T14:30:00Z" },
-        { "id": 2, "name": "Sarah Johnson", "content": "Can’t wait to try the new asparagus risotto next week!", "date": "2025-04-17T09:15:00Z" },
-        { "id": 3, "name": "Sarah Johnson", "content": "Can’t wait to try the new asparagus risotto next week!", "date": "2025-04-17T09:15:00Z" },
-        { "id": 4, "name": "Sarah Johnson", "content": "Can’t wait to try the new asparagus risotto next week!", "date": "2025-04-17T09:15:00Z" },
-        { "id": 5, "name": "Sarah Johnson", "content": "Can’t wait to try the new asparagus risotto next week!", "date": "2025-04-17T09:15:00Z" }
+        { "id": 1, "user_id": 1, "blog_id": 1, "name": "John Doe", "comment": "The spring menu is absolutely amazing! The lamb with mint pesto was to die for." },
+        { "id": 2, "user_id": 2, "blog_id": 1, "name": "Sarah Johnson", "comment": "Can't wait to try the new asparagus risotto next week!" }
       ]
     },
     {
@@ -34,8 +31,10 @@
       "tags": ["summer", "cocktails", "refreshing"],
       "status": "Published",
       "comments": [
-        { "id": 1, "name": "Emily Chen", "content": "The mango margarita is a game-changer! So refreshing!", "date": "2025-06-02T17:45:00Z" },
-        { "id": 2, "name": "Michael Lee", "content": "Loved the citrus mojito, perfect for summer evenings.", "date": "2025-06-03T12:20:00Z" }
+        { "id": 3, "user_id": 3, "blog_id": 2, "name": "Mike Chen", "comment": "The summer cocktails are so refreshing!" },
+        { "id": 4, "user_id": 4, "blog_id": 2, "name": "Emma Wilson", "comment": "Love the new drink menu!" },
+        { "id": 5, "user_id": 5, "blog_id": 2, "name": "David Brown", "comment": "The mango margarita is my new favorite!" },
+        { "id": 6, "user_id": 6, "blog_id": 2, "name": "Lisa Wong", "comment": "Perfect drinks for a hot summer day!" }
       ]
     },
     {
@@ -52,7 +51,8 @@
       "tags": ["fall", "harvest", "seasonal"],
       "status": "Published",
       "comments": [
-        { "id": 1, "name": "Anna Patel", "content": "The pumpkin soup was incredible! Perfect for fall.", "date": "2025-09-11T10:00:00Z" }
+        { "id": 7, "user_id": 7, "blog_id": 3, "name": "Anna Patel", "comment": "The pumpkin soup was incredible! Perfect for fall." },
+        { "id": 8, "user_id": 8, "blog_id": 3, "name": "Robert Garcia", "comment": "The apple cider-glazed pork was cooked to perfection!" }
       ]
     },
     {
@@ -69,8 +69,8 @@
       "tags": ["winter", "comfort food", "hearty"],
       "status": "Published",
       "comments": [
-        { "id": 1, "name": "David Kim", "content": "The beef stew was amazing, but the mulled wine stole the show!", "date": "2025-12-02T19:10:00Z" },
-        { "id": 2, "name": "Lisa Wong", "content": "Not a fan of the truffle mac, but the stew was great.", "date": "2025-12-03T08:50:00Z" }
+        { "id": 9, "user_id": 9, "blog_id": 4, "name": "David Kim", "comment": "The beef stew was amazing, but the mulled wine stole the show!" },
+        { "id": 10, "user_id": 10, "blog_id": 4, "name": "Lisa Wong", "comment": "Not a fan of the truffle mac, but the stew was great." }
       ]
     },
     {
@@ -87,7 +87,7 @@
       "tags": ["farm-to-table", "local", "sustainability"],
       "status": "Published",
       "comments": [
-        { "id": 1, "name": "Rachel Green", "content": "Love knowing my food comes from local farms!", "date": "2025-03-21T11:25:00Z" }
+        { "id": 11, "user_id": 11, "blog_id": 5, "name": "Rachel Green", "comment": "Love knowing my food comes from local farms!" }
       ]
     },
     {
@@ -104,8 +104,8 @@
       "tags": ["vegan", "plant-based", "healthy"],
       "status": "Published",
       "comments": [
-        { "id": 1, "name": "Tom Nguyen", "content": "The quinoa bowl is my new go-to! So flavorful!", "date": "2025-05-06T13:40:00Z" },
-        { "id": 2, "name": "Clara Smith", "content": "Finally, a vegan menu that doesn’t compromise on taste!", "date": "2025-05-07T09:00:00Z" }
+        { "id": 12, "user_id": 12, "blog_id": 6, "name": "Tom Nguyen", "comment": "The quinoa bowl is my new go-to! So flavorful!" },
+        { "id": 13, "user_id": 13, "blog_id": 6, "name": "Clara Smith", "comment": "Finally, a vegan menu that doesn't compromise on taste!" }
       ]
     },
     {
@@ -122,7 +122,8 @@
       "tags": ["wine", "pairing", "events"],
       "status": "Published",
       "comments": [
-        { "id": 1, "name": "Mark Evans", "content": "The wine pairing was fantastic! Can’t wait for the next one.", "date": "2025-07-13T20:15:00Z" }
+        { "id": 14, "user_id": 14, "blog_id": 7, "name": "Mark Evans", "comment": "The wine pairing was fantastic! Can't wait for the next one." },
+        { "id": 15, "user_id": 15, "blog_id": 7, "name": "Sophia Lee", "comment": "The sommelier's selection was exceptional. Perfect pairings!" }
       ]
     },
     {
@@ -138,9 +139,7 @@
       "category": "Our Team",
       "tags": ["chefs", "behind the scenes", "culinary"],
       "status": "Published",
-      "comments": [
-        { "id": 1, "name": "Laura Brown", "content": "Loved learning about the chefs! So much talent.", "date": "2025-02-11T15:30:00Z" }
-      ]
+      "comments": []
     },
     {
       "id": 9,
@@ -155,10 +154,7 @@
       "category": "Menu Updates",
       "tags": ["desserts", "sweets", "pastry"],
       "status": "Published",
-      "comments": [
-        { "id": 1, "name": "Sophie Carter", "content": "The lemon tart was divine! Perfect balance of flavors.", "date": "2025-08-21T16:50:00Z" },
-        { "id": 2, "name": "James Wilson", "content": "Chocolate mousse was a bit too rich for me, but beautifully made.", "date": "2025-08-22T10:10:00Z" }
-      ]
+      "comments": []
     },
     {
       "id": 10,
@@ -173,9 +169,7 @@
       "category": "Sustainability",
       "tags": ["seafood", "sustainability", "ocean-friendly"],
       "status": "Published",
-      "comments": [
-        { "id": 1, "name": "Ella Foster", "content": "The scallops were amazing, and I love the sustainability focus!", "date": "2025-06-16T18:20:00Z" }
-      ]
+      "comments": []
     },
     {
       "id": 11,
@@ -190,10 +184,7 @@
       "category": "Menu Updates",
       "tags": ["brunch", "weekend", "breakfast"],
       "status": "Published",
-      "comments": [
-        { "id": 1, "name": "Chris Taylor", "content": "The pancakes were fluffy perfection!", "date": "2025-04-26T11:00:00Z" },
-        { "id": 2, "name": "Kelly Adams", "content": "Avocado toast was good, but a bit overpriced.", "date": "2025-04-27T09:30:00Z" }
-      ]
+      "comments": []
     },
     {
       "id": 12,
@@ -208,9 +199,7 @@
       "category": "Beverages",
       "tags": ["craft beer", "pairings", "local"],
       "status": "Published",
-      "comments": [
-        { "id": 1, "name": "Sam Rivera", "content": "The IPA with the sliders was a match made in heaven!", "date": "2025-07-26T19:00:00Z" }
-      ]
+      "comments": []
     },
     {
       "id": 13,
@@ -225,9 +214,7 @@
       "category": "Menu Updates",
       "tags": ["kids", "family", "healthy"],
       "status": "Published",
-      "comments": [
-        { "id": 1, "name": "Megan Hall", "content": "My kids loved the mini burgers! Great options.", "date": "2025-03-16T12:45:00Z" }
-      ]
+      "comments": []
     },
     {
       "id": 14,
@@ -243,8 +230,8 @@
       "tags": ["cooking classes", "learn", "culinary"],
       "status": "Published",
       "comments": [
-        { "id": 1, "name": "Grace Lee", "content": "The pasta-making class was so much fun! Learned a lot.", "date": "2025-05-31T14:20:00Z" },
-        { "id": 2, "name": "Ethan Moore", "content": "Can’t wait for the dessert class next month!", "date": "2025-06-01T10:15:00Z" }
+        { "id": 1, "user_id": 1, "blog_id": 14, "name": "Grace Lee", "comment": "The pasta-making class was so much fun! Learned a lot." },
+        { "id": 2, "user_id": 2, "blog_id": 14, "name": "Ethan Moore", "comment": "Can’t wait for the dessert class next month!" }
       ]
     },
     {
@@ -260,9 +247,6 @@
       "category": "Menu Updates",
       "tags": ["holidays", "festive", "celebration"],
       "status": "Published",
-      "comments": [
-        { "id": 1, "name": "Olivia Scott", "content": "The holiday menu looks amazing! Already booked our table.", "date": "2025-11-16T13:30:00Z" },
-        { "id": 2, "name": "Henry Davis", "content": "The yule log dessert was a highlight of our meal!", "date": "2025-11-17T09:40:00Z" }
-      ]
+      "comments": []
     }
   ]

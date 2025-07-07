@@ -6,15 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Log;
+use App\Models\BlogComments;
 
 
 class Blog extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'title',
         'excerpt',
@@ -43,6 +39,19 @@ class Blog extends Model
         'likes' => 'array',
         'dislikes' => 'array',
     ];
+
+
+    public function comments()
+    {
+        return $this->hasMany(BlogComments::class, 'blog_id');
+    }
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $with = ['comments'];
+
 
     /**
      * Convert tags string to array if it's a string

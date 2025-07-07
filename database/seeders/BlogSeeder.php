@@ -16,8 +16,17 @@ class BlogSeeder extends Seeder
      */
     public function run(): void
     {
-        // Clear existing blog data
+        // Disable foreign key checks
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        
+        // Clear existing data from related tables first
+        DB::table('blog_comments')->truncate();
+        
+        // Then clear blogs table
         DB::table('blogs')->truncate();
+        
+        // Re-enable foreign key checks
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         // Get the path to the JSON file
         $json = File::get(database_path('seeders/data/blogs.json'));

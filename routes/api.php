@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\ChangePersonalUserDataController;
 use App\Http\Controllers\Auth\ChangeUserPasswordController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\TwoFactorController;
+use App\Http\Controllers\BlogCommentsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartItemsController;
 use App\Http\Controllers\CheckoutsController;
@@ -104,6 +105,12 @@ Route::middleware(IsAuthorized::class)->group(function () {
     Route::delete('v1/favoriteProducts/{id}', [FavoriteProductsController::class, 'removeFavoriteProduct']);
 });
 
-// Blog Public Routes
+// Blog Routes
 Route::get('v1/blogs', [BlogController::class, 'getBlogs']);
 Route::get('v1/blogs/{id}', [BlogController::class, 'singleBlog']);
+// Authorized Blog Routes
+Route::middleware(IsAuthorized::class)->group(function () {
+    Route::patch('v1/blogs/{id}/like', [BlogController::class, 'likeBlog']);
+    Route::patch('v1/blogs/{id}/dislike', [BlogController::class, 'dislikeBlog']);
+    Route::post('v1/blogs/comment', [BlogCommentsController::class, 'addComment']);
+});
