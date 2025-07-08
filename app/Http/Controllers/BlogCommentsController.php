@@ -40,7 +40,7 @@ class BlogCommentsController extends Controller
             Blog::forgetBlogCache($request->blog_id);
             return response()->json([
                 'status' => 'success',
-                'message' => 'Comment added successfully',
+                'message' => 'Thank`s for your comment',
             ]);
         } catch (\Exception $e) {
             return self::serverError();
