@@ -99,13 +99,14 @@ class Blog extends Model
                 'sometimes',
                 'nullable',
                 function ($attribute, $value, $fail) {
+                    // If it's a string that's not a file path
                     if (is_string($value) && !is_file($value)) {
                         // Validate URL
                         if (!filter_var($value, FILTER_VALIDATE_URL)) {
-                            $fail('The avatar must be either a valid URL or an image file.');
+                            $fail('The image must be a valid URL, base64 image, or image file.');
                         }
                     } else {
-                        // Validate file
+                        // Validate file upload
                         $validator = Validator::make(
                             ['image' => $value],
                             ['image' => 'image|mimes:jpeg,png,jpg,webp|max:2048']
@@ -155,11 +156,13 @@ class Blog extends Model
      * @param array &$updateData
      * @return void
      */
-    public static function handleImageUpdate($request, $blog, $uploadHandler, &$updateData)
+    public static function handleImageUpdate($request, $blog, $uploadHandler, &$updateData): void
     {
         // Delete old image if exists
         if ($request->hasFile('image')) {
-            $uploadHandler->deletePhoto($blog->image_public_id);
+            if ($blog->image_public_id) {
+                $uploadHandler->deletePhoto($blog->image_public_id);
+            }
 
             // Upload new image
             $uploadResult = $uploadHandler->uploadPhoto(
@@ -171,10 +174,9 @@ class Blog extends Model
             $blog->image = $uploadResult['avatar'];
             $blog->image_public_id = $uploadResult['avatar_public_id'];
 
-            // Also update the updateData array for any additional processing
+            // Update the updateData array by reference
             $updateData['image'] = $uploadResult['avatar'];
             $updateData['image_public_id'] = $uploadResult['avatar_public_id'];
-
         }
     }
 

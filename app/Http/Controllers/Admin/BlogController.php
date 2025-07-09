@@ -9,7 +9,7 @@ use App\Traits\AdminSecurityHeaders;
 use App\Traits\UserId;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class BlogController extends Controller
 {
@@ -57,7 +57,7 @@ class BlogController extends Controller
 
             $response = response()->json([
                 'status' => 'success',
-                'data' => $blog
+                'message' => 'Blog Added Successfully'
             ], 201);
 
             return $this->adminSecurityHeaders($response);
@@ -115,7 +115,8 @@ class BlogController extends Controller
             Blog::forgetBlogCache($blog->id);
 
             $response = response()->json([
-                'status' => 'Blog updated successfully'
+                'status' => 'success',
+                'message' => 'Blog Updated Successfully'
             ], 200);
 
             return $this->adminSecurityHeaders($response);
