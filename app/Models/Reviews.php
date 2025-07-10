@@ -36,4 +36,25 @@ class Reviews extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Validation rules
+    public static function rules()
+    {
+        return [
+            'client_name' => 'required|string|max:100',
+            'client_email' => 'required|email|unique:reviews,client_email',
+            'rating' => 'required|integer|min:1|max:5',
+            'review' => 'required|string|max:1000',
+        ];
+    }
+
+    // Validation messages
+    public static function messages()
+    {
+        return [
+            'client_email.unique' => 'You have already submitted a review with this email address.',
+            'rating.min' => 'Rating must be at least 1 star.',
+            'rating.max' => 'Rating cannot be more than 5 stars.'
+        ];
+    }
 }

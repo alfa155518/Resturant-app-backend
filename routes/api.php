@@ -72,6 +72,11 @@ Route::middleware(IsAuthorized::class)->group(function () {
 // Reviews Routes
 Route::get('v1/reviews', [ReviewsController::class, 'getAllReviews']);
 
+// Authorized Reviews Routes
+Route::middleware(IsAuthorized::class)->group(function () {
+    Route::post('v1/reviews', [ReviewsController::class, 'addReview']);
+});
+
 // Cart Routes
 Route::middleware(IsAuthorized::class)->group(function () {
     Route::post('v1/cart', [CartItemsController::class, 'addProductToCart']);
@@ -108,6 +113,7 @@ Route::middleware(IsAuthorized::class)->group(function () {
 // Blog Routes
 Route::get('v1/blogs', [BlogController::class, 'getBlogs']);
 Route::get('v1/blogs/{id}', [BlogController::class, 'singleBlog']);
+
 // Authorized Blog Routes
 Route::middleware(IsAuthorized::class)->group(function () {
     Route::patch('v1/blogs/{id}/like', [BlogController::class, 'likeBlog']);
