@@ -26,6 +26,82 @@ A robust and scalable backend API for a modern restaurant management system, bui
 -   **Testing**: PHPUnit, Pest
 -   **Deployment**: Docker, Laravel Forge/Envoyer
 
+## 📁 Project Structure
+
+```
+backend/
+├── .env                    # Environment configuration
+├── .env.example           # Example environment file
+├── .gitattributes         # Git attributes
+├── .gitignore             # Git ignore rules
+├── artisan               # Laravel command-line interface
+├── composer.json         # PHP dependencies
+├── composer.lock         # Locked PHP dependencies
+├── package.json          # Node.js dependencies
+├── phpunit.xml          # PHPUnit configuration
+├── vite.config.js       # Vite configuration
+│
+├── app/                    # Application core
+│   ├── Console/           # Artisan commands
+│   ├── Exceptions/        # Exception handlers
+│   ├── Http/              # HTTP layer
+│   │   ├── Controllers/   # Request handlers
+│   │   │   ├── Admin/     # Admin controllers
+│   │   │   │   ├── Auth/  # Admin authentication
+│   │   │   │   └── ...    # Other admin controllers
+│   │   │   └── Auth/      # Authentication controllers
+│   │   │       ├── LoginController.php
+│   │   │       ├── RegisterController.php
+│   │   │       └── ...
+│   │   ├── Middleware/    # HTTP middleware
+│   │   └── Requests/      # Form request validation
+│   │
+│   ├── Models/            # Database models
+│   │   ├── User.php
+│   │   └── Admin/         # Admin models
+│   │
+│   ├── Providers/         # Service providers
+│   ├── Services/          # Business logic services
+│   └── Traits/            # Reusable traits
+│
+├── config/                # Configuration files
+│   ├── app.php           # Application configuration
+│   ├── auth.php          # Authentication config
+│   ├── database.php      # Database config
+│   └── ...
+│
+├── database/
+│   ├── factories/        # Model factories
+│   ├── migrations/       # Database migrations
+│   ├── seeders/          # Database seeders
+│   └── ...
+│
+├── public/               # Publicly accessible files
+│   ├── index.php        # Application entry point
+│   ├── favicon.ico      # Favicon
+│   └── ...
+│
+├── resources/
+│   ├── css/             # CSS files
+│   ├── js/              # JavaScript files
+│   ├── lang/            # Language files
+│   └── views/           # Blade templates
+│
+├── routes/
+│   ├── api.php         # API routes
+│   ├── web.php         # Web routes
+│   └── admin.php       # Admin routes
+│
+├── storage/             # Storage directory
+│   ├── app/            # Application storage
+│   ├── framework/      # Framework storage
+│   └── logs/           # Application logs
+│
+└── tests/              # Test suites
+    ├── Feature/        # Feature tests
+    └── Unit/           # Unit tests
+```
+
 ## 📞 Contact
 
 For support, feature requests, or any questions, please reach out to us:
